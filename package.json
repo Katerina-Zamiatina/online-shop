@@ -1,0 +1,35 @@
+{
+  "name": "online-shop",
+  "version": "2.0.0",
+  "description": "",
+  "homepage": "https://katerina-zamiatina.github.io/online-shop/",
+  "scripts": {
+    "start": "parcel src/*.html",
+    "build": "parcel build src/*.html --public-url /online-shop/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
+  },
+  "keywords": [],
+  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goitacademy/parcel-project-template/issues"
+  },
+  "dependencies": {
+    "modern-normalize": "^1.1.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.6.0",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
+    "eslint-webpack-plugin": "^3.2.0",
+    "parcel": "^2.6.0",
+    "parcel-reporter-clean-dist": "^1.0.4",
+    "posthtml-include": "^1.7.4",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.4"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead"
+}
