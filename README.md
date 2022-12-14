@@ -17,3 +17,5 @@ Endpoints:
 - Get products of a category - 'https://dummyjson.com/products/category/smartphones'
 
 - Search products - 'https://dummyjson.com/products/search?q=phone'
+
+- https://online-store-rs.netlify.app/?stock=2%E2%86%95150&search=149
