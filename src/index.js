@@ -1,15 +1,5 @@
 import './sass/index.scss';
+import App from './components/app/app';
 
-const baseUrl = 'https://dummyjson.com/products';
-
-async function getAllProducts() {
-  try {
-    const products = await fetch(`${baseUrl}?limit=100`);
-    console.log(products);
-  } catch (error) {
-    console.error('Error message', error);
-  }
-}
-
-
-getAllProducts()
+const app = new App();
+app.start();
