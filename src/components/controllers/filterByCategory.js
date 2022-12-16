@@ -1,3 +1,3 @@
-import Api from "./apiService"
+import Filter from '../view/filter/filter';
 
-Api.get
+class FilterByCategory {}
