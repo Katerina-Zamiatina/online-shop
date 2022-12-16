@@ -6,9 +6,8 @@ class App {
     this.view = new AppView();
   }
 
- async start() {
-      const categories = await getAllCategories();
-
+  async start() {
+    const categories = await getAllCategories();
     this.view.drawCategoryFilter(categories);
   }
 }
