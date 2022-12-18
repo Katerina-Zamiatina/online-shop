@@ -3,16 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/7af22f3d21.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
     <title>Online shop</title>
   </head>
-  <body>
+  <body class="body">
 
-    <div class="heder"></div>
+    <header class="header">
+      <nav class="headerNav">
+        <h1 class="headerLogo">Super<i class="fa-brands fa-shopify headerIcon"></i>shop</h1>
+        <div class="total"> Cart total: 0.00€</div>
+        <div class="basket">
+          <div class="iconBasket"><i class="fa-solid fa-cart-shopping"></i></div>
+          <div class="totalItems">0</div>
+        </div>
+      </nav>
+    </header>
     <div class="main">
       <div id="productCard" class="productCard"></div>
       <div class="filtr"></div>
     </div>
-    <div class="footer"></div>
 
     <div class="root"></div>
     <main>
@@ -27,5 +37,16 @@
       </label>
     </template>
 
+    <div class="footer">
+      <nav class="footerNav">
+        <div class="gitHubLogo"><a class="linkGitHub" href="https://github.com/Katerina-Zamiatina"><i class="fa-brands fa-github iconGitHub"></i></a></div>
+        <div class="rsLogo"><a href="https://rs.school/js/"><img class="rsLogoImg" src="https://rs.school/images/rs_school_js.svg" alt="logoRsSchool"></a></div>
+        <div class="avtors">
+          <div class="avtor1">Kateryna Zamiatina</div>
+          <div class="avtor2">Sergii Polushkin</div>
+          <div class="yearFooter">2022</div>
+        </div>
+      </nav>
+    </div>
   </body>
 </html>
