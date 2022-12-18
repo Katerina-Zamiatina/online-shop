@@ -30,8 +30,7 @@ export async function searchProduct(query) {
 
 export async function getAllCategories() {
   try {
-      const res = await fetch(`${prod}/categories`);
-      
+    const res = await fetch(`${prod}/categories`);
     return res.json();
   } catch (error) {
     console.error('Error:', error);
@@ -51,6 +50,17 @@ export async function getBrandsName() {
   try {
     const data = await getProducts();
     return [...new Set(data.products.map(({ brand }) => brand))];
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+export async function getProductsByBrand(checkedBrand) {
+  try {
+    const data = await getProducts();
+    return [
+      ...new Set(data.products.filter(({ brand }) => brand === checkedBrand)),
+    ];
   } catch (error) {
     console.error('Error:', error);
   }
