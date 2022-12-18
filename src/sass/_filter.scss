@@ -1,9 +1,10 @@
-.category-filter {
-    height: 250px;
-    overflow: scroll;
-    border: 1px solid red;
-    display: flex;
-    flex-direction: column;
-    max-width: 200px;
+.category-filter,
+.brand-filter {
+  height: 250px;
+  overflow: scroll;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+  margin-bottom: 20px;
 }
-

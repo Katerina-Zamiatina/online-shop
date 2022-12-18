@@ -1,5 +1,6 @@
-import AppView from '../view/appView';
-import { getAllCategories } from '../controllers/apiService';
+import AppView from '../pages/mainPage/appView';
+import { getAllCategories, getBrandsName } from '../controllers/apiService';
+import { getFilteredItems } from '../controllers/getFilteredItem';
 
 class App {
   constructor() {
@@ -9,6 +10,11 @@ class App {
   async start() {
     const categories = await getAllCategories();
     this.view.drawCategoryFilter(categories);
+
+    const brands = await getBrandsName();
+    this.view.drawBrandFilter(brands);
+
+    getFilteredItems()
   }
 }
 
