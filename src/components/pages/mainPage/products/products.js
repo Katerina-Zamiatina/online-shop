@@ -3,8 +3,9 @@ import {getProducts, getProductById, searchProduct, getCategories, getCategory, 
 
 const productsData = await getProducts();
 const productsArr = productsData.products;
-
 let productById = await getProductById(2);
+
+
 
 
 class Product {
@@ -40,30 +41,31 @@ class Product {
         let catalog = '';
 
         productsArr.forEach(({title, brand, price, discountPercentage, images, stock}) =>{
-        
+          let nameUpperCase = title.toUpperCase();
+          let brandUpperCase = brand.toUpperCase();
         catalog += `
         <li class="card">
             <div class="wrapperImg">
               <img class="imagesProduct" src=${images[0]} alt="foto_product">
             </div>
-            <h3 class="nameProduct">${title}</h3>
-            <span class="nameBrand">Brand: ${brand}</span>
-            <span class="price">Price: ${price}</span>
-            <span class="discount">Discount: ${discountPercentage}</span>
-            <span class="stock">Stock: ${stock}</span>
+            <h3 class="nameProduct">${nameUpperCase}</h3>
+            <span class="nameBrand">brand: ${brandUpperCase}</span>
+            <span class="price">price: ${price}</span>
+            <span class="discount">discount: ${discountPercentage}</span>
+            <span class="stock">stock: ${stock}</span>
             <div class="buttonsCard">
-              <button class="addProduct">ADD TO BASKET</button>
-              <button class="description">DESCRIPTION</button>
+              <button class="addProduct">add to basket</button>
+              <button class="description">description</button>
             </div>
         </li>
         `
         });
         const card = `
-        <ul class="wrapperProductCards">
+        <ul class="wrapperProductCards" id="wrapperProductCards">
              ${catalog}
         </ul>
     `;
-    
+
     const ROOT_PRODUCT_CARD = document.getElementById("productCard");
           ROOT_PRODUCT_CARD.innerHTML = card;
     };    

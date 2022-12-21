@@ -1,0 +1,27 @@
+.wrapperSearch{
+  display: grid;
+  height: 60px;
+  width: 70%;
+  grid-template-columns: 1fr 1fr;
+  background-color: aqua;
+  margin-top: 15px;
+  margin-left: 30%;
+}
+.form_search{
+ display: grid;
+ width: 40%;
+ height: 40px;
+ align-self: center;
+ justify-self: end;
+ margin-right: 10%;
+}
+.found{
+  display: grid;
+  width: 100px;
+  height: 40px;
+  align-self: center;
+  justify-self: end;
+  background-color: beige;
+  align-content: center;
+  font-size: 24px;
+}
