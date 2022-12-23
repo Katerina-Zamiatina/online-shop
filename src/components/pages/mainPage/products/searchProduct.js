@@ -3,15 +3,34 @@ const searchBar = document.getElementById('searchBar');
 
 
 
-searchBar.addEventListener('keyup', (e) => {
+if (window.localStorage) {
+  let elements = document.querySelectorAll('[name]');
+ 
+  for (let i = 0, length = elements.length; i < length; i++) {
+    (function(element) {
+      let name = element.getAttribute('name');
+ 
+      element.value = localStorage.getItem(name) || '';
+ 
+      element.onkeyup = function() {
+        localStorage.setItem(name, element.value);
+      };
+    })(elements[i]);
+  }
+}
+
+
+
+   searchBar.addEventListener('input', (e) => {
   
     const searchString = e.target.value.toUpperCase();
+    console.log(searchString);
     const baseUrl = 'https://dummyjson.com/';
     const prod = baseUrl + 'products';
     
-    async function searchProduct(query) {
+    async function searchProduct() {
       try {
-        const res = await fetch(`${prod}/search?q=${query}`);
+        const res = await fetch(`${prod}?limit=100`);
         let d = await res.json();
          sd = await d.products;
 
@@ -24,7 +43,6 @@ searchBar.addEventListener('keyup', (e) => {
               card.stock.toString().includes(searchString)
           );
       });
-       
 
       function countSerch(){
         let countNum = filteredCards.length
@@ -75,11 +93,10 @@ searchBar.addEventListener('keyup', (e) => {
         console.error('Error:', error);
       }
     }
-  
+    
    searchProduct(searchString);
 
   });
-
 
 
 
