@@ -22,15 +22,14 @@ if (window.localStorage) {
 
 
    searchBar.addEventListener('input', (e) => {
-  
+    event.preventDefault();
     const searchString = e.target.value.toUpperCase();
-    console.log(searchString);
     const baseUrl = 'https://dummyjson.com/';
     const prod = baseUrl + 'products';
     
-    async function searchProduct() {
+    async function searchProduct(query) {
       try {
-        const res = await fetch(`${prod}?limit=100`);
+        const res = await fetch(`${prod}/search?q=${query}&limit=100`);
         let d = await res.json();
          sd = await d.products;
 
@@ -68,12 +67,12 @@ if (window.localStorage) {
             </div>
             <h3 class="nameProduct">${nameUpperCase}</h3>
             <span class="nameBrand">brand: ${brandUpperCase}</span>
-            <span class="price">price: ${price}</span>
-            <span class="discount">discount: ${discountPercentage}</span>
-            <span class="stock">stock: ${stock}</span>
+            <span class="price" data-price="${price}">price: ${price}</span>
+            <span class="discount" data-discount="${discountPercentage}">discount: ${discountPercentage}</span>
+            <span class="stock" data-stock="${stock}">stock: ${stock}</span>
             <div class="buttonsCard">
-              <button class="addProduct">add to basket</button>
-              <button class="description">description</button>
+              <button class="addProduct">Add to basket</button>
+              <button class="description">Description</button>
             </div>
         </li>
         `
@@ -93,7 +92,7 @@ if (window.localStorage) {
         console.error('Error:', error);
       }
     }
-    
+
    searchProduct(searchString);
 
   });

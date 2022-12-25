@@ -44,7 +44,7 @@ class Product {
           let nameUpperCase = title.toUpperCase();
           let brandUpperCase = brand.toUpperCase();
         catalog += `
-        <li class="card">
+        <li class="card" data-discount="${discountPercentage}" data-stock="${stock}">
             <div class="wrapperImg">
               <img class="imagesProduct" src=${images[0]} alt="foto_product">
             </div>
@@ -54,8 +54,8 @@ class Product {
             <span class="discount">discount: ${discountPercentage}</span>
             <span class="stock">stock: ${stock}</span>
             <div class="buttonsCard">
-              <button class="addProduct">add to basket</button>
-              <button class="description">description</button>
+              <button class="addProduct">Add to basket</button>
+              <button class="description">Description</button>
             </div>
         </li>
         `
