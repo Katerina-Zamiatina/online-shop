@@ -21,17 +21,28 @@
   border-radius: 50px 0 0 50px;
   gap: 10px;
 }
-.card {
+
+
+.changeDisplayCard{
+  display: grid;
+  width: 70%;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 10px;
+  margin-left: 30%;
+  justify-items: center;
+  background-image: linear-gradient(to left, rgb(115, 121, 67), rgb(191, 206, 124));
+  border: 3px solid rgb(85, 73, 73);
+  border-radius: 50px 0 0 50px;
+  gap: 10px;
+}
+.card{
   display: grid;
   width: 80%;
   margin-top: 10px;
   justify-self: center;
   justify-items: center;
-  background-image: linear-gradient(
-    to left,
-    rgb(115, 121, 67),
-    rgb(191, 206, 124)
-  );
+  text-align: center;
+  background-image: linear-gradient(to left, rgb(115, 121, 67), rgb(191, 206, 124));
   border: 2px solid black;
   border-radius: 8px;
 }
@@ -59,13 +70,15 @@
 }
 .buttonsCard .addProduct {
   display: grid;
-  width: 70%;
+  width: 45%;
   height: 40px;
+  grid-template-columns: 1fr 1fr;
   justify-self: center;
   align-content: center;
   white-space: nowrap;
   border-radius: 8px;
   color: rgb(254, 254, 254);
+  font-size: 18px;
   background-image: linear-gradient(to left, rgb(59, 60, 54), rgb(38, 40, 29));
   cursor: pointer;
 }
@@ -86,6 +99,7 @@
   white-space: nowrap;
   border-radius: 8px;
   color: rgb(254, 254, 254);
+  font-size: 18px;
   background-image: linear-gradient(to left, rgb(59, 60, 54), rgb(38, 40, 29));
   cursor: pointer;
 }
@@ -97,10 +111,15 @@
     rgb(120, 126, 91)
   );
 }
+.hide{
+  display: none;
+}
 
-@media (max-width: 1178px) and (min-width: 668px) {
-  .buttonsCard {
-    height: 110px;
-    grid-template-columns: 1fr;
-  }
+@media(max-width: 1178px) and (min-width: 668px){
+
+.buttonsCard{
+  height: 110px;
+  grid-template-columns: 1fr;
+}
+
 }
