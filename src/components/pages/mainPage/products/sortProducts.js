@@ -1,4 +1,5 @@
 import {getProducts} from '../../../controllers/apiService';
+import './changeDisplay';
 const productsData = await getProducts();
 const data = productsData.products;
 const select = document.getElementById("sortSelect");     
@@ -127,7 +128,7 @@ let optionValue = this.options[this.selectedIndex].value
 
 });
 
-(function(){
+(function localStorageSort(){
         if (localStorage.selectedIndex !== undefined) {
             select.selectedIndex = localStorage.selectedIndex;
         }
@@ -135,6 +136,8 @@ let optionValue = this.options[this.selectedIndex].value
             localStorage.selectedIndex = this.selectedIndex;
         }
     })()
+
+
     
 
 
