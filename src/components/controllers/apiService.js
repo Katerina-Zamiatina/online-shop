@@ -1,6 +1,8 @@
 const baseUrl = 'https://dummyjson.com/';
 const prod = baseUrl + 'products';
 
+export const { products } = await getProducts();
+
 export async function getProducts(limit = 100) {
   try {
     const res = await fetch(`${prod}?limit=${limit}`);

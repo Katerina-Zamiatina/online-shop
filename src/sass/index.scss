@@ -1,7 +1,6 @@
-// @import './common';
-
-@import './products';
+@import './common';
+@import './main/main';
+@import './main/products';
 @import './header';
 @import './footer';
-@import './filter';
-
+@import './main/filter';
