@@ -2,7 +2,7 @@
   display: grid;
   height: 60px;
   width: 70%;
-  grid-template-columns:repeat(3, 1fr);
+  grid-template-columns:repeat(4, 1fr);
   background-color: aqua;
   margin-top: 15px;
   margin-left: 30%;
@@ -34,4 +34,37 @@
   justify-self: center;
   align-self: center;
   border-radius: 8px;
+}
+.changeDisplay{
+  display: grid;
+  width: 60%;
+  height: 40px;
+  grid-template-columns: 1fr 1fr;
+  background-color: blanchedalmond;
+  justify-self: center;
+  align-self: center;
+}
+.display2x2{
+  width: 90%;
+  height: 95%;
+  justify-self: center;
+  align-self: center;
+  font-size: 2rem;
+  background-color: darkcyan;
+  cursor: pointer;
+}
+.display3x3{
+  width: 90%;
+  height: 95%;
+  justify-self: center;
+  align-self: center;
+  font-size: 2rem;
+  background-color: darkcyan;
+  cursor: pointer;
+}
+.display2x2:hover{
+  background-color: blueviolet;
+}
+.display3x3:hover{
+  background-color: blueviolet;
 }

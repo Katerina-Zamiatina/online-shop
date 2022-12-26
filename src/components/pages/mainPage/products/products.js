@@ -54,7 +54,7 @@ class Product {
             <span class="discount">discount: ${discountPercentage}</span>
             <span class="stock">stock: ${stock}</span>
             <div class="buttonsCard">
-              <button class="addProduct">Add to basket</button>
+              <button class="addProduct"><i class="fa-solid fa-cart-arrow-down iconAdd"></i>Add</button>
               <button class="description">Description</button>
             </div>
         </li>
