@@ -1,43 +1,85 @@
-import { getProductsByCategory, getAllCategories } from './apiService';
-import Products from '../pages/mainPage/products/products';
+import { products } from './apiService';
+import Product from '../pages/mainPage/products/products';
 
-const categories = await getAllCategories();
+const product = new Product();
+let allCheckBoxes = [];
 let filteredProducts = [];
+let actualCategories = [];
+
+const filters = {
+  category: [],
+  brand: [],
+  price: [],
+  discount: [],
+};
 
 export async function getFilteredItems() {
-  const allProducts = new Products();
-  const allCheckBoxes = document.querySelectorAll('input[type=checkbox]');
-
-  Array.prototype.forEach.call(allCheckBoxes, function (el) {
-    el.addEventListener('change', () => {
-      updateProducts(el, allCheckBoxes);
-    });
-  });
+  allCheckBoxes = document.querySelectorAll('input[type=checkbox]');
+  allCheckBoxes.forEach(el =>
+    el.addEventListener('change', () => updateProducts())
+  );
 }
+
+// export const getKeyItems = (
+//   key = 'category',
+//   value = '',
+//   arr = [...products]
+// ) => {
+//   console.log("ARR", arr)
+//   const keyList = `arr${key}Name`;
+//   console.log('keyList',keyList);
+//   if (!!value) return [...arr];
+//   // if (value.length !== [keyList].length) {
+//   //   return console.log(`error ${value.length}!=${[keyList].length}`);
+//   // }
+//   const valFlt = [...keyList].filter((_, i) => !!value[i]);
+//   console.log('valFlt', valFlt);
+//   const ar = [...arr].filter((el, i) => valFlt.includes(el[key]));
+//   console.log('ar',ar);
+//   return ar;
+// };
 
 function getCheckboxesValue(checkboxes) {
   const values = [];
   checkboxes.forEach(el => {
     if (el.checked) {
       values.push(el.value);
+      if (el.name === 'category') {
+        filters.category.push(el.value);
+      }
+      if (el.name === 'brand') {
+        filters.brand.push(el.value);
+      }
     }
   });
+  filters.category = getUnique(filters.category).filter(el =>
+    values.includes(el)
+  );
+  filters.brand = getUnique(filters.brand).filter(el => values.includes(el));
   return values;
 }
 
-async function updateProducts(el, check) {
-  const value = el.value;
-  const checkboxesValue = getCheckboxesValue(Array.from(check));
-  let { products } = await getProductsByCategory(value);
-  filteredProducts.push(products);
+const getUnique = arr => arr.filter((el, i) => i === arr.indexOf(el));
 
-  if (checkboxesValue.length > 0) {
-    filteredProducts = filteredProducts
-      .flat()
-      .filter(el => checkboxesValue.includes(el.category));
-  } else {
-    filteredProducts = [];
+async function updateProducts() {
+  const checkedValues = getCheckboxesValue(Array.from(allCheckBoxes));
+  if (checkedValues.length >= 0) {
+    filteredProducts = filterPlainArray();
   }
+  if (checkedValues < 0) {
+    filteredProducts = [...products];
+  }
+  product.renderFilteredProducts(filteredProducts);
+}
 
-  console.log('P', filteredProducts);
+function filterPlainArray() {
+  const filterKeys = Object.keys(filters);
+  return products.filter(item => {
+    return filterKeys.every(key => {
+      if (!filters[key].length) return true;
+      return filters[key].find(filter => {
+        return filter === item[key];
+      });
+    });
+  });
 }

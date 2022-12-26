@@ -3,67 +3,104 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/7af22f3d21.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/7af22f3d21.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courgette&display=swap"
+      rel="stylesheet"
+    />
     <title>Online shop</title>
   </head>
   <body class="body">
     <header class="header">
       <nav class="headerNav">
-        <h1 class="headerLogo">Super<i class="fa-brands fa-shopify headerIcon"></i>shop</h1>
-        <div class="total"> Cart total: 0.00€</div>
+        <h1 class="headerLogo">
+          Super<i class="fa-brands fa-shopify headerIcon"></i>shop
+        </h1>
+        <div class="total">Cart total: 0.00€</div>
         <div class="basket">
-          <div class="iconBasket"><i class="fa-solid fa-cart-shopping"></i></div>
+          <div class="iconBasket">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
           <div class="totalItems">0</div>
         </div>
       </nav>
     </header>
     <main class="main">
+      <aside class="filter">
+        <form class="category-filter" id="category"></form>
+        <form class="brand-filter" id="brand"></form>
+        <div></div>
+      </aside>
       <div class="wrapperSearch">
-        <select  id="sortSelect" class="sortSelect">
-          <option class="sortOption" id="priceDESK" value="priceDESK" >Sort by price DESK</option>
-          <option class="sortOption" id="priceASK" value="priceASK" >Sort by price ASK</option>
-          <option class="sortOption" id="discountDESK" value="discountDESK" >Sort by discount DESK</option>
-          <option class="sortOption" id="discountASK" value="discountASK" >Sort by discount ASK</option>
-          <option class="sortOption" id="stockDESK" value="stockDESK" >Sort by stock DESK</option>
-          <option class="sortOption" id="stockASK" value="stockASK" >Sort by stock ASK</option>
-        </select>  
-        <div class="found" id="found">Found: 
+        <select id="sortSelect" class="sortSelect">
+          <option class="sortOption" id="priceDESK" value="priceDESK">
+            Sort by price DESK
+          </option>
+          <option class="sortOption" id="priceASK" value="priceASK">
+            Sort by price ASK
+          </option>
+          <option class="sortOption" id="discountDESK" value="discountDESK">
+            Sort by discount DESK
+          </option>
+          <option class="sortOption" id="discountASK" value="discountASK">
+            Sort by discount ASK
+          </option>
+          <option class="sortOption" id="stockDESK" value="stockDESK">
+            Sort by stock DESK
+          </option>
+          <option class="sortOption" id="stockASK" value="stockASK">
+            Sort by stock ASK
+          </option>
+        </select>
+        <div class="found" id="found">
+          Found:
           <div class="foundNum" id="foundNum">100</div>
         </div>
-          <form id="searchWrapper" class="form_search" action="#">
-            <input type="text" id="searchBar" class="inputText" placeholder="Search product" name="name" value="">
-          </form>
-          <div class="changeDisplay">
-            <button id="display2x2" class="display2x2"><i class="fa-solid fa-table-cells-large iconDisplay2x2"></i></button>
-            <button id="display3x3" class="display3x3"><i class="fa-solid fa-table-cells iconDisplay6x6"></i></button>
-          </div>
+        <form id="searchWrapper" class="form_search" action="#">
+          <input
+            type="text"
+            id="searchBar"
+            class="inputText"
+            placeholder="Search product"
+            name="name"
+            value=""
+          />
+        </form>
+        <div class="changeDisplay">
+          <button id="display2x2" class="display2x2">
+            <i class="fa-solid fa-table-cells-large iconDisplay2x2"></i>
+          </button>
+          <button id="display3x3" class="display3x3">
+            <i class="fa-solid fa-table-cells iconDisplay6x6"></i>
+          </button>
+        </div>
       </div>
       <div id="productCard" class="productCard"></div>
     </main>
-
-    <main>
-      <form class="category-filter">
-      </form>
-      <form class="brand-filter"></form>
-    </main>
-    <template id="filter-temp">
-      <label>
-        <input class="filter_item" type="checkbox" />
-        <span class="filter_item-name"></span>
-      </label>
-    </template>
-
-    <div class="footer">
+    <footer class="footer">
       <nav class="footerNav">
-        <div class="gitHubLogo"><a class="linkGitHub" href="https://github.com/Katerina-Zamiatina"><i class="fa-brands fa-github iconGitHub"></i></a></div>
-        <div class="rsLogo"><a href="https://rs.school/js/"><img class="rsLogoImg" src="https://rs.school/images/rs_school_js.svg" alt="logoRsSchool"></a></div>
+        <div class="gitHubLogo">
+          <a class="linkGitHub" href="https://github.com/Katerina-Zamiatina"
+            ><i class="fa-brands fa-github iconGitHub"></i
+          ></a>
+        </div>
+        <div class="rsLogo">
+          <a href="https://rs.school/js/"
+            ><img
+              class="rsLogoImg"
+              src="https://rs.school/images/rs_school_js.svg"
+              alt="logoRsSchool"
+          /></a>
+        </div>
         <div class="avtors">
           <div class="avtor1">Kateryna Zamiatina</div>
           <div class="avtor2">Sergii Polushkin</div>
           <div class="yearFooter">2022</div>
         </div>
       </nav>
-    </div>
+    </footer>
   </body>
 </html>
