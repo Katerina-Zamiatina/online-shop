@@ -1,70 +1,46 @@
-.wrapperSearch{
+.wrapperSearch {
   display: grid;
-  height: 60px;
-  width: 70%;
-  grid-template-columns:repeat(4, 1fr);
-  background-color: aqua;
-  margin-top: 15px;
-  margin-left: 30%;
+  padding: 9px 5px;
+  margin-bottom: 11px;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+  box-shadow: $shadow-inner;
+  border-radius: 5px;
 }
-.form_search{
- display: grid;
- width: 40%;
- height: 40px;
- align-self: center;
- justify-self: end;
- margin-right: 10%;
+.inputText {
+  padding: 5px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: $secondary-bg-color;
+  box-shadow: $shadow-outer;
 }
-.found{
-  display: grid;
-  width: 100px;
-  height: 40px;
+.found {
+  display: inline;
   align-self: center;
-  justify-self: end;
-  background-color: beige;
-  align-content: center;
-  font-size: 24px;
-}
-.sortSelect{
-  width: 80%;
-  height: 40px;
-  font-size: 24px;
-  background-color: rgb(58, 45, 45);
-  color:bisque;
   justify-self: center;
-  align-self: center;
+}
+
+.sortSelect {
+  padding: 5px 0;
+  background-color: $secondary-bg-color;
   border-radius: 8px;
+  border: none;
+  box-shadow: $shadow-outer;
 }
-.changeDisplay{
+.changeDisplay {
   display: grid;
-  width: 60%;
-  height: 40px;
   grid-template-columns: 1fr 1fr;
-  background-color: blanchedalmond;
   justify-self: center;
-  align-self: center;
 }
-.display2x2{
-  width: 90%;
-  height: 95%;
+.display2x2,
+.display3x3 {
+  width: 100%;
   justify-self: center;
-  align-self: center;
-  font-size: 2rem;
-  background-color: darkcyan;
-  cursor: pointer;
+  padding: 5px;
 }
-.display3x3{
-  width: 90%;
-  height: 95%;
-  justify-self: center;
-  align-self: center;
-  font-size: 2rem;
-  background-color: darkcyan;
-  cursor: pointer;
-}
-.display2x2:hover{
-  background-color: blueviolet;
-}
-.display3x3:hover{
-  background-color: blueviolet;
+
+.display2x2 {
+  margin-right: 5px;
 }
