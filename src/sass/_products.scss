@@ -1,0 +1,131 @@
+.wrapperProductCards {
+  display: flex;
+  flex-wrap: wrap;
+  // box-sizing: border-box;
+  // display: grid;
+  // grid-template-columns: minmax(3, 1fr);
+  // grid-row-gap: 5px;
+  // grid-column-gap: 5px;
+  // max-width: 100%;
+  // margin-top: 15px;
+  // justify-content: space-between;
+}
+
+.changeDisplayCard {
+  display: flex;
+  flex-wrap: wrap;
+
+  // box-sizing: border-box;
+  // display: grid;
+  // grid-template-columns: repeat(4, 1fr);
+  // grid-row-gap: 5px;
+  // grid-column-gap: 5px;
+  // max-width: 100%;
+  // margin-top: 15px;
+  // justify-content: space-between;
+}
+
+.wrapperProductCards > .card {
+  flex-basis: calc((100% - 4 * 20px) / 4);
+  border-radius: 7px;
+  border: 0.5px solid #dbdbdb;
+  background-color: $secondary-bg-color;
+  padding: 5px;
+  position: relative;
+  margin: 4.3px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.changeDisplayCard > .card {
+  flex-basis: calc((100% - 6 * 20px) / 6);
+  padding: 5px;
+  border-radius: 7px;
+  border: 0.5px solid #dbdbdb;
+  background-color: $secondary-bg-color;
+  position: relative;
+  margin: 4.3px;;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  box-shadow: $shadow-hover;
+  border-color: transparent;
+}
+
+.wrapperImg {
+  max-width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.wrapperImg .imagesProduct {
+  object-fit: cover;
+  max-height: 120px;
+  border-radius: 8px;
+}
+
+.nameProduct {
+  margin-top: 10px;
+  font-size: 10px;
+}
+
+.nameBrand {
+  display: block;
+  margin-top: 5px;
+}
+
+.price-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.discount {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #fd4d56;
+  text-shadow: rgba(250, 36, 47, 0.582) 0px 5px 15px;
+}
+
+.stock {
+  margin-top: 5px;
+}
+
+.buttonsCard {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.buttonsCard .addProduct {
+  padding: 5px;
+  justify-self: start;
+}
+.buttonsCard .description {
+  padding: 5px;
+  justify-self: end;
+}
+
+.hide {
+  display: none;
+}
+
+// @media (max-width: 1178px) and (min-width: 668px) {
+//   .buttonsCard {
+//     height: 110px;
+//     grid-template-columns: 1fr;
+//   }
+// }

@@ -9,18 +9,18 @@ const brandsName = await getBrandsName();
 const filterByCat = categoriesName
   .map(cat => {
     const el = cat.toLowerCase().replace(/ /g, '').slice(0, 20);
-    return `<input class="filter_item" type="checkbox" name="category" value="${cat}" id=""/>
+    return `<div class="filter_item"><input  type="checkbox" name="category" value="${cat}" id=""/>
           <label class="filter_item-name" name="category" for="${cat}">${cat}</label>
-          <span class="stock">5/5</span>`;
+          <span class="stock">5/5</span></div>`;
   })
   .join('');
 
 const filterByBrand = brandsName
   .map(brand => {
     const el = brand.toLowerCase().replace(/ /g, '').slice(0, 20);
-    return `<input class="filter_item" type="checkbox" name="brand" value="${brand}" id=""/>
+    return `<div class="filter_item"><input class="filter_item" type="checkbox" name="brand" value="${brand}" id=""/>
           <label class="filter_item-name" name="category" for="${brand}">${brand}</label>
-          <span class="stock">5/5</span>`;
+          <span class="stock">5/5</span></div>`;
   })
   .join('');
 

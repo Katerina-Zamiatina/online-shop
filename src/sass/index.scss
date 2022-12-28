@@ -1,7 +1,10 @@
+@import './utils/normalize';
+@import './utils/colors';
+@import './utils/breakpoints';
 @import './common';
-@import './main/main';
-@import './main/products';
 @import './header';
-@import './footer';
-@import './main/filter';
+@import './main';
 @import './searchProduct';
+@import './filter';
+@import './products';
+@import './footer';
