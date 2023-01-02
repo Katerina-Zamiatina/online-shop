@@ -4,7 +4,7 @@ import Product from '../pages/mainPage/products/products';
 const product = new Product();
 let allCheckBoxes = [];
 let filteredProducts = [];
-let actualCategories = [];
+const productsContainer = document.getElementById('productCard');
 
 const filters = {
   category: [],
@@ -19,25 +19,6 @@ export async function getFilteredItems() {
     el.addEventListener('change', () => updateProducts())
   );
 }
-
-// export const getKeyItems = (
-//   key = 'category',
-//   value = '',
-//   arr = [...products]
-// ) => {
-//   console.log("ARR", arr)
-//   const keyList = `arr${key}Name`;
-//   console.log('keyList',keyList);
-//   if (!!value) return [...arr];
-//   // if (value.length !== [keyList].length) {
-//   //   return console.log(`error ${value.length}!=${[keyList].length}`);
-//   // }
-//   const valFlt = [...keyList].filter((_, i) => !!value[i]);
-//   console.log('valFlt', valFlt);
-//   const ar = [...arr].filter((el, i) => valFlt.includes(el[key]));
-//   console.log('ar',ar);
-//   return ar;
-// };
 
 function getCheckboxesValue(checkboxes) {
   const values = [];
@@ -65,6 +46,11 @@ async function updateProducts() {
   const checkedValues = getCheckboxesValue(Array.from(allCheckBoxes));
   if (checkedValues.length >= 0) {
     filteredProducts = filterPlainArray();
+    if (filteredProducts.length === 0) {
+      productsContainer.innerHTML = `<h2>Nothing found! Try another filters.</h2>`;
+      console.log(productsContainer.innerHTML);
+      alert('Nothing found! Try another filters');
+    }
   }
   if (checkedValues < 0) {
     filteredProducts = [...products];
