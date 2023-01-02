@@ -1,7 +1,16 @@
-// import AppView from '../pages/mainPage/appView';
-// import { getAllCategories, getBrandsName } from '../controllers/apiService';
 import { getFilteredItems } from '../controllers/getFilteredItem';
 import { drawAside } from '../pages/mainPage/aside/filter';
+import Product from '../pages/mainPage/products/products';
+import NotFound from '../pages/notFoundPage/notFound';
+import Cart from '../pages/cartPage/cart';
+
+const routes = {
+  // '/': HomeScreen,
+  // '/product/:id': ProductScreen,
+  '/cart': Cart,
+  '/cart/:id': Cart,
+  '/404': NotFound,
+};
 
 class App {
   async start() {
@@ -9,23 +18,5 @@ class App {
     getFilteredItems();
   }
 }
-
-
-
-// class App {
-//   constructor() {
-//     this.view = new AppView();
-//   }
-
-//   async start() {
-//     const categories = await getAllCategories();
-//     this.view.drawCategoryFilter(categories);
-
-//     const brands = await getBrandsName();
-//     this.view.drawBrandFilter(brands);
-
-//     getFilteredItems();
-//   }
-// }
 
 export default App;

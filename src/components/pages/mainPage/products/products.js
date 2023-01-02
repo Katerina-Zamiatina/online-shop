@@ -16,7 +16,6 @@ let productById = await getProductById(2);
 class Product {
   renderOneProduct() {
     let oneProduct = '';
-
     oneProduct += `
               <ul class="wrapperProductCards">
                 <li class="card">
@@ -85,7 +84,6 @@ class Product {
 
   renderFilteredProducts(products) {
     let catalog = '';
-
     products.forEach(
       ({ title, brand, price, discountPercentage, images, stock }) => {
         catalog += `

@@ -24,11 +24,46 @@ const filterByBrand = brandsName
   })
   .join('');
 
+const priceSlider = (min = 10, max = 1749) => {
+  return `
+    <div class="price-input" id='priceInfo'>
+      <span class="input-min price-info">${min}</span>
+      <div class="separator">price</div>
+      <span class="input-max price-info">${max}</span>
+    </div>
+  <div class="slider">
+    <div class="progress" id="priceProgress"></div>
+  </div>
+  <fieldset class="range-input" req="" gid="" id="priceDual">
+    <input type="range" class="range-min" min="{${min}" max="${max}" value="${min}" step="100" evt="change" handlers="doubles">
+    <input type="range" class="range-max" min="${min}" max="${max}" value="${max}" step="100" evt="change" handlers="doubles">
+  </fieldset>`;
+};
+
+const stockSlider = (min = 2, max = 150) => {
+  return ` <div class="rating-input" id='ratingInfo'>
+      <span class="input-min rating-info">${min}</span>
+      <div class="separator">stock</div>
+      <span class="input-max rating-info">${max}</span>
+    </div>
+  <div class="slider">
+    <div class="progress" id="ratingProgress"></div>
+  </div>
+  <fieldset class="range-input" req="" gid="" id="ratingDual">
+    <input type="range" class="range-min" min="{${min}" max="${max}" value="${min}" step="1" evt="change" handlers="doubles">
+    <input type="range" class="range-max" min="${min}" max="${max}" value="${max}" step="1" evt="change" handlers="doubles">
+  </fieldset>`;
+};
+
 export async function drawAside() {
   const filterCat = document.querySelector('.category-filter');
   const brandFilter = document.querySelector('.brand-filter');
+  const priceDualSlider = document.querySelector('.price-slider');
+  const stockDualSlider = document.querySelector('.stock-slider');
   filterCat.innerHTML = filterByCat;
   brandFilter.innerHTML = filterByBrand;
+  priceDualSlider.innerHTML = priceSlider();
+  stockDualSlider.innerHTML = stockSlider();
 }
 
 // class Filter {
