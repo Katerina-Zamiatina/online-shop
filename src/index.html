@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
@@ -76,7 +76,7 @@
               class="inputText"
               placeholder="Search product"
               name="name"
-              value=""
+              value=`${value} || «»`} 
             />
           </form>
           <div class="changeDisplay">
@@ -91,6 +91,58 @@
         <div id="productCard" class="productCard"></div>
       </div>
     </main>
+    <div class="wrapperBackground">
+      <div class="wrapperBuyCard">
+        <form class="formBuy">
+          <div class="areaName">
+            <h3>Personal details</h3>
+            <div class="form-conrol">
+              <input data-rule="name" id="name" class="name input" placeholder="Name" type="text" >
+              <span class="wrapperInput wrapperName"></span>
+            </div>  
+            <div class="form-control">
+              <input data-rule="tel" id="tel" class="phone input" placeholder="Phone number" type="tel" >
+              <span class="wrapperInput wrapperTel"></span>
+            </div>
+            <div class="form-control">
+              <input data-rule="address" id="address" class="address input" placeholder="Delivery address" type="text" >
+              <span class="wrapperInput wrapperAddress"></span>
+            </div>
+            <div class="form-control">
+              <input data-rule="email" id="email" class="email input" placeholder="E-mail" type="text">
+              <span class="wrapperInput wrapperEmail"></span>
+            </div>
+          </div>
+          <div class="wrapperBankCard">
+            <h3>Credit card details</h3>
+            <div class="bankCardNumIcon">
+              <ul class="wrapperIconCard">
+                <li class="iconCard iconVisa "><i class="fa-brands fa-cc-visa"></i></li>
+                <li class="iconCard iconMastercard activeCard"><i class="fa-brands fa-cc-mastercard"></i></li>
+                <li class="iconCard iconPaypal "><i class="fa-brands fa-cc-paypal"></i></li> 
+              </ul>
+              <div class="form-control">
+                <input data-rule="cardNumber" id="cardNumber" class="cardNumber input" placeholder="Card number" type="number">
+                <span class="wrapperInput wrapperCardNumber"></span>
+              </div>
+            </div>
+            <div class="form-control wrapperValidCard">
+              <label for="validCard">valid:</label>
+              <input data-rule="validCard" id="validCard" class="validCard input" placeholder="mm / yy" value="" type="text" >
+              <span class="wrapperInput wrapperValidCard"></span>
+            </div>
+            <div class="form-control wrapperValidCard">
+              <label>cvv:</label>
+              <input data-rule="cvv" id="cvv" class="cvv input" placeholder="Code" type="number" maxlength="3">
+              <span class="wrapperInput wrapperCvv"></span>            
+            </div>
+          </div>
+          <div id="wrapperSpanSuccsess" class="wrapperSpanSuccsess"></div>
+          <button id="btnvalidation" class="btnvalidation" type="submit">CONFIRM</button>
+        </form>
+      </div>
+    </div>
+    <button id="clickForm" class="clickForm">НАЖАТЬ ДЛЯ ВЫЗОВА ФОРМЫ ОПЛАТЫ</button>
     <footer class="footer">
       <nav class="footerNav">
         <div class="gitHubLogo">

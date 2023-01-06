@@ -1,3 +1,5 @@
+//import parseRequestUrl from '../../../controllers/utils';
+
 const productCard = document.getElementById('productCard');
 const searchBar = document.getElementById('searchBar');
 
