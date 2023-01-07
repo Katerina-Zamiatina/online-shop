@@ -12,7 +12,7 @@ const routes = {
   '/': HomePage,
   '/product/:id': ProductDetails,
   '/cart': Cart,
-  '/cart/:id': Cart,
+  // '/cart/:id': Cart,
   '/404': NotFound,
 };
 

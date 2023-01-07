@@ -20,6 +20,7 @@ const ProductDetails = {
         // ProductDetails.render(item);
       });
     });
+     
     // Add product to Cart
     const btnsAdd = document.querySelectorAll('.addProduct');
   },
@@ -30,7 +31,7 @@ const ProductDetails = {
     return `<div class="back-to-result">
         <a href="/#/">Back to shopping </a>
       </div>
-      <div class="productMore">${await ProductItem.render(product[0])}</div>
+      <div class="productMore">${ProductItem.render(product[0])}</div>
     `;
   },
 };
