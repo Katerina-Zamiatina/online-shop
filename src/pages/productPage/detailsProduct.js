@@ -1,6 +1,6 @@
 import ProductItem from '../mainPage/products/ProductItem';
 import { rerender, parseRequestUrl } from '../../controllers/utils';
-import { getProductCard, getProductById } from '../../index';
+import { getProductById } from '../../controllers/localApi';
 
 // console.log(getProductById("2"))
 
