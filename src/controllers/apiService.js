@@ -23,7 +23,7 @@ export async function getProductById(id) {
 
 export async function searchProduct(query) {
   try {
-    const res = await fetch(`${prod}/search?q=${query}`);
+    const res = await fetch(`${prod}/search?q=${query}&limit=100`);
     return res.json();
   } catch (error) {
     console.error('Error:', error);
