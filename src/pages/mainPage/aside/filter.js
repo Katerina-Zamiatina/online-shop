@@ -1,26 +1,22 @@
-import {
-  getBrandsName,
-  getAllCategories,
-} from '../../../controllers/apiService';
+import { setStartFilter } from '../../../controllers/getFilteredItem';
 
-const categoriesName = await getAllCategories();
-const brandsName = await getBrandsName();
+const categoriesName = [...setStartFilter('category')];
+const brandsName = [...setStartFilter('brand')];
+
 
 const filterByCat = categoriesName
   .map(cat => {
-    const el = cat.toLowerCase().replace(/ /g, '').slice(0, 20);
-    return `<div class="filter_item"><input  type="checkbox" name="category" value="${cat}" id=""/>
-          <label class="filter_item-name" name="category" for="${cat}">${cat}</label>
-          <span class="stock">5/5</span></div>`;
+    return `<div class="filter_item"><input  type="checkbox" name="category" value="${cat.name}" id="${cat.name}"/>
+          <label class="filter_item-name" name="category" for="${cat.name}">${cat.name}</label>
+          <span class="stock">${cat.count}/${cat.count}</span></div>`;
   })
   .join('');
 
 const filterByBrand = brandsName
   .map(brand => {
-    const el = brand.toLowerCase().replace(/ /g, '').slice(0, 20);
-    return `<div class="filter_item"><input class="filter_item" type="checkbox" name="brand" value="${brand}" id=""/>
-          <label class="filter_item-name" name="category" for="${brand}">${brand}</label>
-          <span class="stock">5/5</span></div>`;
+    return `<div class="filter_item"><input class="filter_item" type="checkbox" name="brand" value="${brand.name}" id="${brand.name}"/>
+          <label class="filter_item-name" name="category" for="${brand.name}">${brand.name}</label>
+          <span class="stock">${brand.count}/${brand.count}</span></div>`;
   })
   .join('');
 

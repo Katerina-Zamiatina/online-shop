@@ -16,133 +16,24 @@
   <body class="body">
     <header class="header">
       <nav class="headerNav">
+        <a href="/">
         <h1 class="headerLogo">
           Super<i class="fa-brands fa-shopify headerIcon"></i>shop
-        </h1>
-        <div class="total">Cart total: 0.00€</div>
-        <div class="basket">
-          <div class="iconBasket">
-            <i class="fa-solid fa-cart-shopping"></i>
-          </div>
-          <div class="totalItems">0</div>
+        </h1></a>
+        <div class="total">
+          Cart total:<span class="total-in-cart"> 0.00€ </span>
         </div>
+        <a href="/#/cart" id="cart">
+          <div class="basket">
+            <div class="iconBasket">
+              <i class="fa-solid fa-cart-shopping"> </i>
+            </div>
+            <div class="totalItems">0</div>
+          </div></a
+        >
       </nav>
     </header>
-    <main class="main" id="main-container">
-      <aside class="filter">
-        <div class="filter_btns">
-          <button type="button" class="filter_btn">Clear Filters</button>
-          <button type="button" class="filter_btn">Copy link</button>
-        </div>
-        <h3 class="filter_title">Category</h3>
-        <form class="category-filter" id="category"></form>
-        <h3 class="filter_title">Brand</h3>
-        <form class="brand-filter" id="brand"></form>
-        <h3 class="filter_title">Price</h3>
-        <div class="price-slider"></div>
-        <h3 class="filter_title">Stock</h3>
-        <div class="stock-slider"></div>
-      </aside>
-      <div class="right-side">
-        <div class="wrapperSearch">
-          <select id="sortSelect" class="sortSelect">
-            <option class="sortOption" id="priceDESK" value="priceDESK">
-              Sort by price DESK
-            </option>
-            <option class="sortOption" id="priceASK" value="priceASK">
-              Sort by price ASK
-            </option>
-            <option class="sortOption" id="discountDESK" value="discountDESK">
-              Sort by discount DESK
-            </option>
-            <option class="sortOption" id="discountASK" value="discountASK">
-              Sort by discount ASK
-            </option>
-            <option class="sortOption" id="stockDESK" value="stockDESK">
-              Sort by stock DESK
-            </option>
-            <option class="sortOption" id="stockASK" value="stockASK">
-              Sort by stock ASK
-            </option>
-          </select>
-          <div class="found" id="found">
-            Found:
-            <span class="foundNum" id="foundNum">100</span>
-          </div>
-          <form id="searchWrapper" class="form_search" action="#">
-            <input
-              type="text"
-              id="searchBar"
-              class="inputText"
-              placeholder="Search product"
-              name="name"
-              value=`${value} || «»`} 
-            />
-          </form>
-          <div class="changeDisplay">
-            <button id="display2x2" class="display2x2">
-              <i class="fa-solid fa-table-cells-large iconDisplay2x2"></i>
-            </button>
-            <button id="display3x3" class="display3x3">
-              <i class="fa-solid fa-table-cells iconDisplay6x6"></i>
-            </button>
-          </div>
-        </div>
-        <div id="productCard" class="productCard"></div>
-      </div>
-    </main>
-    <div class="wrapperBackground">
-      <div class="wrapperBuyCard">
-        <form class="formBuy">
-          <div class="areaName">
-            <h3>Personal details</h3>
-            <div class="form-conrol">
-              <input data-rule="name" id="name" class="name input" placeholder="Name" type="text" >
-              <span class="wrapperInput wrapperName"></span>
-            </div>  
-            <div class="form-control">
-              <input data-rule="tel" id="tel" class="phone input" placeholder="Phone number" type="tel" >
-              <span class="wrapperInput wrapperTel"></span>
-            </div>
-            <div class="form-control">
-              <input data-rule="address" id="address" class="address input" placeholder="Delivery address" type="text" >
-              <span class="wrapperInput wrapperAddress"></span>
-            </div>
-            <div class="form-control">
-              <input data-rule="email" id="email" class="email input" placeholder="E-mail" type="text">
-              <span class="wrapperInput wrapperEmail"></span>
-            </div>
-          </div>
-          <div class="wrapperBankCard">
-            <h3>Credit card details</h3>
-            <div class="bankCardNumIcon">
-              <ul class="wrapperIconCard">
-                <li class="iconCard iconVisa "><i class="fa-brands fa-cc-visa"></i></li>
-                <li class="iconCard iconMastercard activeCard"><i class="fa-brands fa-cc-mastercard"></i></li>
-                <li class="iconCard iconPaypal "><i class="fa-brands fa-cc-paypal"></i></li> 
-              </ul>
-              <div class="form-control">
-                <input data-rule="cardNumber" id="cardNumber" class="cardNumber input" placeholder="Card number" type="number">
-                <span class="wrapperInput wrapperCardNumber"></span>
-              </div>
-            </div>
-            <div class="form-control wrapperValidCard">
-              <label for="validCard">valid:</label>
-              <input data-rule="validCard" id="validCard" class="validCard input" placeholder="mm / yy" value="" type="text" >
-              <span class="wrapperInput wrapperValidCard"></span>
-            </div>
-            <div class="form-control wrapperValidCard">
-              <label>cvv:</label>
-              <input data-rule="cvv" id="cvv" class="cvv input" placeholder="Code" type="number" maxlength="3">
-              <span class="wrapperInput wrapperCvv"></span>            
-            </div>
-          </div>
-          <div id="wrapperSpanSuccsess" class="wrapperSpanSuccsess"></div>
-          <button id="btnvalidation" class="btnvalidation" type="submit">CONFIRM</button>
-        </form>
-      </div>
-    </div>
-    <button id="clickForm" class="clickForm">НАЖАТЬ ДЛЯ ВЫЗОВА ФОРМЫ ОПЛАТЫ</button>
+    <main class="main" id="main-container"></main>
     <footer class="footer">
       <nav class="footerNav">
         <div class="gitHubLogo">
@@ -161,7 +52,7 @@
         <div class="avtors">
           <div class="avtor1">Kateryna Zamiatina</div>
           <div class="avtor2">Sergii Polushkin</div>
-          <div class="yearFooter">2022</div>
+          <div class="yearFooter">All rights reserved @2020</div>
         </div>
       </nav>
     </footer>

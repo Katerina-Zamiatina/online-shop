@@ -6,10 +6,10 @@ export function parseRequestUrl() {
     document.location.hash.slice(1).split('?').length === 2
       ? document.location.hash.slice(1).split('?')[1]
       : '';
-
   const url = address.toLowerCase() || '/';
   const req = url.split('/');
   const query = queryString.split('=');
+
   return {
     resource: req[1],
     id: req[2],
@@ -19,12 +19,11 @@ export function parseRequestUrl() {
   };
 }
 
-export async function rerender(component) {
-  document.getElementById('main-container').innerHTML =
-    await component.render();
+export async function rerender(component, container) {
+  document.getElementById(container).innerHTML = await component.render();
   await component.afterRender();
 }
 
 export function redirect() {
-    document.location.hash = '/'
+  document.location.hash = '/';
 }

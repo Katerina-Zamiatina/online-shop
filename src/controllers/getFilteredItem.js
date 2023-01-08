@@ -1,10 +1,9 @@
 import { products } from './apiService';
-import Product from '../pages/mainPage/products/products';
+import Products from '../pages/mainPage/products/products';
 
-const product = new Product();
 let allCheckBoxes = [];
 let filteredProducts = [];
-const productsContainer = document.getElementById('productCard');
+// const productsContainer = document.getElementById('productCard');
 
 const filters = {
   category: [],
@@ -45,20 +44,43 @@ const getUnique = arr => arr.filter((el, i) => i === arr.indexOf(el));
 async function updateProducts() {
   const checkedValues = getCheckboxesValue(Array.from(allCheckBoxes));
   if (checkedValues.length >= 0) {
-    filteredProducts = filterPlainArray();
-    if (filteredProducts.length === 0) {
-      productsContainer.innerHTML = `<h2>Nothing found! Try another filters.</h2>`;
-      console.log(productsContainer.innerHTML);
-      alert('Nothing found! Try another filters');
-    }
+    filteredProducts = filterProducts();
   }
   if (checkedValues < 0) {
     filteredProducts = [...products];
   }
-  product.renderFilteredProducts(filteredProducts);
+  const filteredList = Products.render(filteredProducts);
+  console.log('!!!', filteredProducts);
+  // product.renderFilteredProducts(filteredProducts);
 }
 
-function filterPlainArray() {
+export function setStartFilter(key = 'category') {
+  const arrProd = [...products];
+  const filters = [...new Set(arrProd.map(el => el[key]))].sort();
+  const result = [...filters].map(filter => {
+    return {
+      ids: arrProd.filter(el => el[key] === filter).map(el => el.id),
+      name: filter,
+      count: arrProd.filter(el => el[key] === filter).length,
+    };
+  });
+  return result;
+}
+
+// export const setFilter = (key = 'category', arr = [...products]) => {
+//   // console.log('key:', key, arr.length);
+//   const listFilter = setStartFilter(key);
+//   const res = [...listFilter].map(el => {
+//     el.count = arr.filter(elm => elm[key] === el.name).length;
+//     el.ids = arr.filter(elm => elm[key] === el.name).map(({ id }) => id);
+
+//     console.log('EL', el.count);
+//     return el;
+//   });
+//   return res;
+// };
+
+function filterProducts() {
   const filterKeys = Object.keys(filters);
   return products.filter(item => {
     return filterKeys.every(key => {
