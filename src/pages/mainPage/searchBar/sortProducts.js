@@ -62,7 +62,7 @@ export async function handleSelect(e, items) {
         return 0;
       }
       let priceASK = data.sort(comparePriceASK);
-      sortedProducts = await Products.render(priceASK);
+      sortedProducts = Products.render(priceASK);
       break;
     case 'discountDESK':
       function compareDiscountDESK(a, b) {

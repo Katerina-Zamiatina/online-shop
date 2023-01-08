@@ -36,9 +36,10 @@ const ProductItem = {
              </div>
              <div class="buttonsCard">
               <button class="addProduct" id='${id}'><i class="fa-solid fa-cart-arrow-down iconAdd"></i></button>
+              <button class="hide deleteProduct" id="${id}">Delete</button>
               <a href='#/product/${id}'><button class="description" id='${id}'>More</button>
               </a>
-              <button class="hide">Delete</button>
+
               <button class="hide buy">Buy Now</button>
              </div>
          </li>

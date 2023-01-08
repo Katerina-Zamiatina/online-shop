@@ -20,8 +20,7 @@ export function parseRequestUrl() {
 }
 
 export async function rerender(component, container) {
-  document.getElementById(container).innerHTML =
-    await component.render();
+  document.getElementById(container).innerHTML = await component.render();
   await component.afterRender();
 }
 

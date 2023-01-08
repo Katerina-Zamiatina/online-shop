@@ -1,45 +1,178 @@
 import { products } from '../data/data';
+import { IProduct } from '../types';
+import { getCartProducts, setCartProducts } from './localStorage';
+
+const initialProducts = products;
+export let updatedProducts = products;
+
+const checkFilters = {
+  brand: [],
+  category: [],
+};
+
+const range = {
+  price: { min: '10', max: '1749' },
+  stock: { min: '2', max: '150' },
+};
 
 export const getProductById = id => {
   return products.filter(item => item.id === id);
 };
 
-let query = 'apple';
-let updatedProducts = products;
-let checkFilters = {
-  brand: [],
-  category: [],
-};
-
-let range = {
-  price: { min: '10', max: '1749' },
-  stock: { min: '2', max: '150' },
-};
-
 // Search by query
-
-function filterBySearchQuery() {
+export function searchProducts(query) {
+  query = query.toUpperCase();
   if (query !== '') {
-    return products.filter(item => {
-      return chooseSearchFields(item, query);
+    updatedProducts = updatedProducts.filter(card => {
+      return (
+        card.title.toUpperCase().includes(query) ||
+        card.brand.toUpperCase().includes(query) ||
+        card.price.toString().includes(query) ||
+        card.discountPercentage.toString().includes(query) ||
+        card.stock.toString().includes(query)
+      );
     });
   } else {
-    return products;
+    updatedProducts = products;
   }
 }
 
-function chooseSearchFields(product, query) {
-  const rg = new RegExp('\\b' + query.toLowerCase() + '\\b');
-  const res = Object.entries(product).some(item => {
-    if (item[0] === 'id' || item[0] === 'thumbnail' || item[0] === 'images')
-      return false;
-    return rg.test(item[1].toString().toLowerCase());
-  }, []);
-  return res;
+// Sort
+
+export function sortProducts(e) {
+  const optionValue = e.target.value;
+  switch (optionValue) {
+    case 'priceDESK':
+      function comparePriceDESK(a, b) {
+        if (a.price < b.price) {
+          return -1;
+        }
+        if (a.price > b.price) {
+          return 1;
+        }
+        return 0;
+      }
+      updatedProducts.sort(comparePriceDESK).reverse();
+      break;
+    case 'priceASK':
+      function comparePriceASK(a, b) {
+        if (a.price < b.price) {
+          return -1;
+        }
+        if (a.price > b.price) {
+          return 1;
+        }
+        return 0;
+      }
+      updatedProducts.sort(comparePriceASK);
+      break;
+    case 'discountDESK':
+      function compareDiscountDESK(a, b) {
+        if (a.discountPercentage < b.discountPercentage) {
+          return -1;
+        }
+        if (a.discountPercentage > b.discountPercentage) {
+          return 1;
+        }
+        return 0;
+      }
+      updatedProducts.sort(compareDiscountDESK).reverse();
+      break;
+    case 'discountASK':
+      function compareDiscountASK(a, b) {
+        if (a.discountPercentage < b.discountPercentage) {
+          return -1;
+        }
+        if (a.discountPercentage > b.discountPercentage) {
+          return 1;
+        }
+        return 0;
+      }
+      updatedProducts.sort(compareDiscountASK);
+      break;
+    case 'stockDESK':
+      function compareStockDESK(a, b) {
+        if (a.stock < b.stock) {
+          return -1;
+        }
+        if (a.stock > b.stock) {
+          return 1;
+        }
+        return 0;
+      }
+      updatedProducts.sort(compareStockDESK).reverse();
+      break;
+    case 'stockASK':
+      function compareStockASK(a, b) {
+        if (a.stock < b.stock) {
+          return -1;
+        }
+        if (a.stock > b.stock) {
+          return 1;
+        }
+        return 0;
+      }
+      updatedProducts.sort(compareStockASK);
+      break;
+  }
+  return updatedProducts;
+}
+
+// Search by checkboxes
+function getCheckboxesValue(checkboxes) {
+  const values = [];
+  checkboxes.forEach(el => {
+    if (el.checked) {
+      values.push(el.id);
+      if (el.name === 'category') {
+        checkFilters.category.push(el.id);
+      }
+      if (el.name === 'brand') {
+        checkFilters.brand.push(el.id);
+      }
+    }
+  });
+  checkFilters.category = getUnique(checkFilters.category).filter(el =>
+    values.includes(el)
+  );
+  checkFilters.brand = getUnique(checkFilters.brand).filter(el =>
+    values.includes(el)
+  );
+
+  return values;
+}
+
+const getUnique = arr => arr.filter((el, i) => i === arr.indexOf(el));
+
+export function updateFilteredProducts(checkboxes) {
+  const checkedValues = getCheckboxesValue(Array.from(checkboxes));
+  if (checkedValues.length >= 0) {
+    updatedProducts = filterProducts();
+  }
+  if (checkedValues < 0) {
+    updatedProducts = [...products];
+  }
+  return updatedProducts;
+}
+
+function filterProducts() {
+  const filterKeys = Object.keys(checkFilters);
+  return products.filter(item => {
+    return filterKeys.every(key => {
+      if (!checkFilters[key].length) return true;
+      return checkFilters[key].find(filter => {
+        return filter === item[key];
+      });
+    });
+  });
+}
+
+export function clearCheckbox(checked) {
+  updatedProducts = [...products];
+  checked.forEach(el => (el.checked = false));
 }
 
 // Search by range
-
 const setRangeState = (type, min, max) => {
   range[type] = { min, max };
 };
@@ -50,35 +183,55 @@ const setRangeValue = (name, min, max) => {
   slider[1].value = max;
 };
 
-const filterByRange = () => {
+export const filterByRange = () => {
   const entries = Object.entries(range);
-  products = entries.reduce((acc, item) => {
+  updatedProducts = entries.reduce((acc, item) => {
     const [key, value] = item;
-    acc = this.checkRange(acc, key, Number(value.min), Number(value.max));
+    acc = checkRange(acc, key, Number(value.min), Number(value.max));
     return acc;
-  }, products);
+  }, updatedProducts);
 };
 
-const drawFilteredProducts = callback => {
-  filterByCheckbox();
-  filterBySearchQuery();
-  updateDoubleRange(products, rangeSliders, setRangeState.bind(this));
-  filterByRange();
-  const sorted = sortProductList();
-  return sorted.map(callback);
+const checkRange = (acc, name, min, max) => {
+  return acc.filter(item => {
+    return item[name] >= min && item[name <= max];
+  });
 };
 
-// const checkIsOrdered = id => {
-//   const keys = Object.keys(this.orderState.orderList);
-//   return keys.includes(id.toString());
+// Add/delete products
+export const addProductToCart = (prod, forceUpdate = false) => {
+  let cartProducts = getCartProducts();
+  const existProduct = cartProducts.find(el => el === prod);
+  console.log(existProduct);
+  if (existProduct) {
+    if (forceUpdate) {
+      cartProducts = cartProducts.map(el => (el === existProduct ? prod : el));
+    }
+  } else {
+    cartProducts = [...cartProducts, prod];
+  }
+  setCartProducts(cartProducts);
+};
+
+export const toggleBuyBtns = (addBtns, delBtns, e) => {
+  console.log(e.currentTarget.id);
+  addBtns.forEach(ab => {
+    if (ab.id === e.currentTarget.id) {
+      ab.classList.toggle('hide');
+    }
+  });
+  delBtns.forEach(db => {
+    if (db.id === e.currentTarget.id) {
+      db.classList.toggle('hide');
+    }
+  });
+};
+
+// export const drawFilteredProducts = (query, e) => {
+//   updatedProducts = filterByCheckbox();
+//   updatedProducts = filterBySearchQuery(query);
+//   updateDoubleRange(updatedProducts, rangeSliders, setRangeState());
+//   filterByRange();
+//   const sorted = sortProducts(e);
+//   return sorted;
 // };
-
-export const getProductCard = id => {
-  const item = getProductById(id);
-  return item;
-  //   return item ? { ...item, ordered: checkIsOrdered(id) } : null;
-};
-
-// console.log('getProductCard', getProductCard(1));
-// console.log(checkProp(products[0], 'apple'));
-// console.log('SEARCH', filterBySearchQuery());

@@ -9,27 +9,29 @@ const ProductDetails = {
     // Open product description
     const request = parseRequestUrl();
     const btnsMore = document.querySelectorAll('.description');
-    console.log(btnsMore);
+    // console.log(btnsMore);
     btnsMore.forEach(b => {
       b.addEventListener('click', () => {
-        console.log('!!!!!', b);
+        // console.log('!!!!!', b);
         request.id = b.id;
         item = products.filter(i => i.id === b.id);
-        console.log(item);
+        // console.log(item);
         document.location.hash = `/product/${request.id}`;
         // ProductDetails.render(item);
       });
     });
-     
+
     // Add product to Cart
     const btnsAdd = document.querySelectorAll('.addProduct');
   },
   render: async () => {
     const request = parseRequestUrl();
     const id = Number(request.id);
-    const product = getProductById(id);
-    return `<div class="back-to-result">
-        <a href="/#/">Back to shopping </a>
+      const product = getProductById(id);
+      console.log(product[0].images)
+      return `
+      <div class="back-to-result">
+        <a href="/#/">Store</a>
       </div>
       <div class="productMore">${ProductItem.render(product[0])}</div>
     `;
