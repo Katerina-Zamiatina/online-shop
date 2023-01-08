@@ -1,4 +1,4 @@
-.wrapperBackground{
+.wrapperBackground {
   display: none;
   width: 100vw;
   height: 100vh;
@@ -8,15 +8,15 @@
   overflow: auto;
   background-color: $primary-bg-color;
 }
-.formBuy{
+.formBuy {
   display: grid;
   width: 60%;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  grid-template-areas: 
-  "name1 card"
-  "massage massage"
-  "button button";
+  grid-template-areas:
+    'name1 card'
+    'massage massage'
+    'button button';
   justify-content: center;
   justify-items: center;
   top: 0;
@@ -25,7 +25,6 @@
   left: 0;
   margin: auto;
   margin-top: 50px;
-
 }
 .wrapperBuyCard {
   display: grid;
@@ -40,95 +39,94 @@
   margin: auto;
 
   margin-top: 50px;
-
 }
-.areaName{
+.areaName {
   display: grid;
   grid-area: name1;
   justify-items: center;
-
 }
-.form-conrol{
+.form-conrol {
   display: grid;
   width: 100%;
   justify-self: center;
 }
-.input{
+.input {
   background-color: $light-gray;
   text-align: center;
   border-radius: 8px;
   height: 20px;
 }
-input[data-rule]{
+
+input[data-rule] {
   display: flex;
   justify-self: center;
   margin-bottom: 20px;
 }
- 
-h3{
+
+.modal-title {
   font-size: 2em;
   text-align: center;
   margin: 0.67em 0;
   color: $light-gray;
 }
-.wrapperValidCard{
-display: grid;
-align-items: center;
+.wrapperValidCard {
+  display: grid;
+  align-items: center;
 }
-.wrapperIconCard{
+.wrapperIconCard {
   justify-self: center;
 }
-.wrapperBankCard{
+.wrapperBankCard {
   display: grid;
   width: 350px;
   grid-area: card;
   background-color: $decorative-color;
   border-radius: 8px;
 }
-.bankCardNumIcon{
+.bankCardNumIcon {
   display: grid;
   align-items: center;
 }
-label{
+.modal-label {
   justify-self: center;
   color: $light-gray;
 }
-.bankCardNumIcon{
+.bankCardNumIcon {
   display: grid;
   justify-self: center;
   color: $light-gray;
 }
-.iconCard{
+.iconCard {
   display: none;
   width: 60px;
   font-size: 46px;
   color: $primary-text-color;
 }
-.activeCard{
+.activeCard {
   display: grid;
 }
-.wrapperInput{
+.wrapperInput {
   width: 100%;
   top: 0;
 }
-.spanSuccess{
+.spanSuccess {
   color: $succes-color;
   text-align: center;
   font-size: 1.2rem;
 }
-.error{
+.error {
   display: grid;
   justify-self: center;
   justify-content: center;
   text-align: center;
 }
-.wrapperSpanSuccsess{
+.wrapperSpanSuccsess {
   display: grid;
   grid-area: massage;
   align-self: flex-start;
   align-content: center;
 }
-.btnvalidation{
+.btnvalidation {
   display: grid;
   grid-area: button;
   width: 100px;
@@ -136,7 +134,6 @@ label{
   justify-content: center;
   align-content: center;
 }
-.btnvalidation:hover{
+.btnvalidation:hover {
   background-color: rgb(200, 183, 161);
 }
-
