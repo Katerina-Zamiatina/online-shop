@@ -1,10 +1,9 @@
 import { parseRequestUrl } from '../../../controllers/utils';
 import ProductItem from './ProductItem';
 
-// let productById = await getProductById(2);
-
 const Products = {
-  render: async prods => {
+  render: prods => {
+    // console.log('PRODS', prods);
     const request = parseRequestUrl();
 
     return `<ul class="wrapperProductCards" id="wrapperProductCards">

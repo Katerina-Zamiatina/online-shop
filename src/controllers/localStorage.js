@@ -1,6 +1,6 @@
 export function getCartProducts() {
   const cartProducts = localStorage.getItem('productsInCart')
-    ? JSON.parse(localstorage.getItem('productsInCart'))
+    ? JSON.parse(localStorage.getItem('productsInCart'))
     : [];
   return cartProducts;
 }

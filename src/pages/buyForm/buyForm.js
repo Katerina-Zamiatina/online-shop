@@ -12,7 +12,6 @@ const validCard = document.getElementById('validCard');
 const cvv = document.getElementById('cvv');
 const wrapperBackground = document.querySelector('.wrapperBackground')
 const listenerForm = document.getElementById('clickForm')
-const btnBuy = document.querySelector('.btnBuy');
 
 cardNumber.addEventListener("input", function() {
     function lim(cardNumber){

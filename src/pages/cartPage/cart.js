@@ -3,7 +3,7 @@ import {
   setCartProducts,
 } from '../../controllers/localStorage';
 import { parseRequestUrl, rerender } from '../../controllers/utils';
-import { getProductById } from '../../controllers/apiService';
+import { getProductById } from '../../controllers/localApi';
 
 function addToCart(prod, forceUpdate = false) {
   let cartProducts = getCartProducts();
@@ -46,14 +46,15 @@ const Cart = {
       });
     });
   },
-  render: async () => {
+  render: () => {
     const request = parseRequestUrl();
     if (request.id) {
-      const product = await getProductById(request.id);
+      const product = getProductById(request.id);
       addToCart({
         product: product.id,
         title: product.title,
         image: product.images[0],
+        thumbnail: product.thumbnail,
         price: product.price,
         stock: product.stock,
         description: product.description,
@@ -92,7 +93,7 @@ const Cart = {
                               idx + 1
                             }</span>
                             <div class="item_image">
-                                <img src="${item.images[0]}" alt="${
+                                <img src="${item.thumbnail}" alt="${
                                   item.title
                                 }"/>
                             </div>

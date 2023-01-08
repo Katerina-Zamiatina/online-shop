@@ -34,7 +34,7 @@ export const handleSearchInput = async e => {
 
   return filteredCards.length === 0
     ? `<h2>Nothing found. Try Another search</h2>`
-    : await Products.render(filteredCards);
+    : Products.render(filteredCards);
 };
 
 export default Search;

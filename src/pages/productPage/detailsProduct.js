@@ -9,17 +9,17 @@ const ProductDetails = {
     // Open product description
     const request = parseRequestUrl();
     const btnsMore = document.querySelectorAll('.description');
-   // console.log(btnsMore);
     btnsMore.forEach(b => {
       b.addEventListener('click', () => {
-        console.log('!!!!!', b);
+        // console.log('!!!!!', b);
         request.id = b.id;
         item = products.filter(i => i.id === b.id);
-        console.log(item);
+        // console.log(item);
         document.location.hash = `/product/${request.id}`;
         // ProductDetails.render(item);
       });
     });
+
 
     function showImage(event) {
     // Получаем элемент, по которому был совершен клик
@@ -39,7 +39,7 @@ const ProductDetails = {
         showImage(event)
       }));
 
-    console.log(images );
+
     // Add product to Cart
     const btnsAdd = document.querySelectorAll('.addProduct');
     const btnBuy = document.querySelector('.btnBuy');
@@ -91,6 +91,7 @@ const ProductDetails = {
             ">BUY NOW</a></button>
           </div>
         </div>
+
       </div>
     </div>
   </div>

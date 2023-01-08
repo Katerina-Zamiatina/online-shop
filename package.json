@@ -6,7 +6,9 @@
   "scripts": {
     "start": "set NODE_ENV=development&&webpack serve",
     "build": "set NODE_ENV=production&&webpack ",
-    "dev": "set NODE_ENV=development&&webpack "
+    "dev": "set NODE_ENV=development&&webpack ",
+    "netlify": "netlify",
+    "deploy": "netlify deploy -p"
   },
   "browserslist": [
     "last 2 versions",
@@ -52,5 +54,8 @@
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "netlify-cli": "^8.15.4"
   }
 }
