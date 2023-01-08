@@ -173,7 +173,7 @@ const Cart = {
                     <div _ngcontent-woy-c28="" class="promo-code">
                         <input _ngcontent-woy-c28="" type="search" placeholder="Enter promo code" class="ng-pristine ng-valid ng-touched">
                     </div>
-                    <button _ngcontent-lhl-c28="">BUY NOW</button>
+                    <button _ngcontent-lhl-c28="" id="btnBuy" class="btnBuy">BUY NOW</button>
                 </div>`
                 }
             </div>`;
