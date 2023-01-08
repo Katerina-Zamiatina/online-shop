@@ -24,17 +24,23 @@
   bottom: 0;
   left: 0;
   margin: auto;
+  margin-top: 50px;
+
 }
 .wrapperBuyCard {
   display: grid;
   position: absolute;
-  height: 60%;
+  height: 80%;
+
   background-color: $buyForm-bg-color;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   margin: auto;
+
+  margin-top: 50px;
+
 }
 .areaName{
   display: grid;

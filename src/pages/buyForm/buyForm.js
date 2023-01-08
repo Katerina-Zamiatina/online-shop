@@ -13,10 +13,6 @@ const cvv = document.getElementById('cvv');
 const wrapperBackground = document.querySelector('.wrapperBackground')
 const listenerForm = document.getElementById('clickForm')
 
-listenerForm.addEventListener('click', function(){
-    wrapperBackground.style.display = "grid";
-})
-
 cardNumber.addEventListener("input", function() {
     function lim(cardNumber){
                     let max_chars = 16;
