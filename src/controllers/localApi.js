@@ -199,22 +199,27 @@ const checkRange = (acc, name, min, max) => {
 };
 
 // Add/delete products
-export const addProductToCart = (prod, forceUpdate = false) => {
-  let cartProducts = getCartProducts();
-  const existProduct = cartProducts.find(el => el === prod);
-  console.log(existProduct);
-  if (existProduct) {
-    if (forceUpdate) {
-      cartProducts = cartProducts.map(el => (el === existProduct ? prod : el));
-    }
-  } else {
-    cartProducts = [...cartProducts, prod];
-  }
-  setCartProducts(cartProducts);
+export const addProductToCart = (prod) => {
+  let cartProducts = setCart();
+  // const existProduct = cartProducts.find(el => el.id === prod.id);
+  // // const duplicates = cartProducts.reduce((acc, el) => {
+  // //   acc[el] = (acc[el] || 0) + 1;
+  // //   return acc;
+  // // }, 0);
+  // // console.log('duplicates', duplicates);
+  // if (existProduct) {
+  //   if (forceUpdate) {
+  //     cartProducts = cartProducts.map(el =>
+  //       el.id === existProduct.id ? prod : el
+  //     );
+  //   }
+  // } else {
+  //   cartProducts = [...cartProducts, prod];
+  // }
+  // setCartProducts(cartProducts);
 };
 
 export const toggleBuyBtns = (addBtns, delBtns, e) => {
-  console.log(e.currentTarget.id);
   addBtns.forEach(ab => {
     if (ab.id === e.currentTarget.id) {
       ab.classList.toggle('hide');

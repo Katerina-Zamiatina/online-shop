@@ -11,6 +11,7 @@ import {
   addProductToCart,
   toggleBuyBtns,
 } from '../../controllers/localApi';
+import { addToCart, setBtnState } from '../../controllers/localStorage';
 
 const aside = Aside.render();
 const searchBar = SearchWrapper.render();
@@ -87,17 +88,17 @@ const HomePage = {
     // Buy&delete
     buyBtns.forEach(b => {
       b.addEventListener('click', e => {
+        console.log(setBtnState(b));
         toggleBuyBtns(buyBtns, deleteBtns, e);
-        // b.classList.add('hide');
         const product = products.filter(el => el.id === Number(b.id));
-        addProductToCart(product[0], true);
+        const { id, price } = product[0];
+        addToCart(id, 1, price);
       });
     });
 
     deleteBtns.forEach(b => {
       b.addEventListener('click', e => {
         toggleBuyBtns(buyBtns, deleteBtns, e);
-        // b.classList.add('hide');
       });
     });
   },
