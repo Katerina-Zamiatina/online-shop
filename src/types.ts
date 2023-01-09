@@ -19,7 +19,26 @@ export interface IData {
   limit: number;
 }
 
-export interface ICart {
-
+export interface IOrder {
+  id: number;
+  count: number;
 }
 
+export type OrderType = {
+  count: string;
+  price: string;
+};
+
+export interface ICart {
+  cartList: IOrder;
+}
+
+export interface ICartProduct extends IProduct {
+  order: OrderType;
+}
+
+
+export type BtnsType = {
+  id: string;
+  state: string;
+};
