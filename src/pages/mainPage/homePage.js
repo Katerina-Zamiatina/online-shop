@@ -11,7 +11,14 @@ import {
   addProductToCart,
   toggleBuyBtns,
 } from '../../controllers/localApi';
-import { addToCart, setBtnState } from '../../controllers/localStorage';
+import {
+  toggleInCart,
+  setBtnState,
+  getProdInCartNum,
+  getCartCount,
+  getProdSum,
+  updateBtnState,
+} from '../../controllers/localStorage';
 
 const aside = Aside.render();
 const searchBar = SearchWrapper.render();
@@ -48,6 +55,12 @@ const HomePage = {
     const copyBtn = document.getElementById('copy');
     const buyBtns = document.querySelectorAll('.addProduct');
     const deleteBtns = document.querySelectorAll('.deleteProduct');
+    const prodInCart = document.querySelector('.totalItems');
+    const totalSum = document.querySelector('.total-in-cart');
+
+    prodInCart.textContent = getProdInCartNum();
+    totalSum.textContent = getProdSum();
+
     copyBtn.addEventListener('click', () => {
       navigator.clipboard.writeText(window.location.href);
     });
@@ -87,18 +100,14 @@ const HomePage = {
 
     // Buy&delete
     buyBtns.forEach(b => {
-      b.addEventListener('click', e => {
-        console.log(setBtnState(b));
-        toggleBuyBtns(buyBtns, deleteBtns, e);
+      b.addEventListener('click', () => {
         const product = products.filter(el => el.id === Number(b.id));
         const { id, price } = product[0];
-        addToCart(id, 1, price);
-      });
-    });
-
-    deleteBtns.forEach(b => {
-      b.addEventListener('click', e => {
-        toggleBuyBtns(buyBtns, deleteBtns, e);
+        toggleInCart(id, 1, price);
+        toggleBuyBtns(b);
+        updateBtnState(b.id, b.dataset.added);
+        prodInCart.textContent = getProdInCartNum();
+        totalSum.textContent = getProdSum();
       });
     });
   },

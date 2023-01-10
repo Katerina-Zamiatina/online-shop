@@ -1,9 +1,10 @@
-import { OrderType, BtnsType } from '../types';
+import { OrderType, Btns, BtnsType } from '../types';
 
 export enum LocalStorage {
   cartList = 'cart_list',
   cartCount = 'cart_count',
-  btns = 'btn_state',
+  btns = 'btns_state',
+  checked = 'checked',
 }
 
 export function updateCart(id: string, count: string, stock: string) {
@@ -20,7 +21,7 @@ export function updateCart(id: string, count: string, stock: string) {
   }
 }
 
-export function addToCart(id: string, count: number, price: string) {
+export function toggleInCart(id: string, count: number, price: string) {
   const store = getCart();
   const length = Object.entries(store).length;
   let newStore = store;
@@ -48,6 +49,20 @@ export function addToCart(id: string, count: number, price: string) {
   setCart(newStore);
 }
 
+export function updateBtnState(id: string, added: boolean) {
+  const btns = getBtnState();
+  let newBtns = btns;
+  console.log('btns[id]', btns);
+  if (added) {
+    newBtns = { ...btns, [id]: { id, added: true } };
+  } else {
+    delete newBtns[id];
+  }
+
+  setBtnState(newBtns);
+  console.log(newBtns);
+}
+
 export function setCart<T>(list: T) {
   localStorage.setItem(LocalStorage.cartList, JSON.stringify(list));
 }
@@ -70,7 +85,7 @@ export function getCartCount() {
   return count ? count : 0;
 }
 
-export function getCartSum() {
+export function getProdInCartNum() {
   const cartValues = Object.values(getCart());
   return cartValues.length
     ? cartValues.reduce((acc, val) => {
@@ -79,13 +94,17 @@ export function getCartSum() {
     : 0;
 }
 
-export function updateBtnsState(id: string, state: string) {
-  const btns = getBtnState();
+export function getProdSum() {
+  const cartValues = Object.values(getCart());
+  return cartValues.length
+    ? cartValues.reduce((acc, val) => {
+        return acc + Math.floor(Number(val.price));
+      }, 0)
+    : 0;
 }
 
 export function setBtnState<T>(btn: T) {
-  // console.log(btn);
-  localStorage.setItem(LocalStorage.cartCount, JSON.stringify(btn));
+  localStorage.setItem(LocalStorage.btns, JSON.stringify(btn));
 }
 
 export function getBtnState() {
@@ -93,6 +112,10 @@ export function getBtnState() {
   if (str === null) return {};
   const btns = JSON.parse(str) as Record<string, BtnsType>;
   return btns ? btns : {};
+}
+
+export function setCheckBoxesState<T>(check: T) {
+  localStorage.setItem(LocalStorage.checked, JSON.stringify(check));
 }
 
 export function clearCart() {

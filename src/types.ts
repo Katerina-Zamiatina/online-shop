@@ -12,12 +12,7 @@ export interface IProduct {
   images: string[];
 }
 
-export interface IData {
-  productList: IProduct[];
-  total: number;
-  skip: number;
-  limit: number;
-}
+export interface IData extends Array<IProduct> {}
 
 export interface IOrder {
   id: number;
@@ -37,8 +32,14 @@ export interface ICartProduct extends IProduct {
   order: OrderType;
 }
 
+export interface Btns extends Element {
+  dataset: {
+    id: string;
+    added: Boolean;
+  };
+}
 
 export type BtnsType = {
   id: string;
-  state: string;
+  added: boolean;
 };
