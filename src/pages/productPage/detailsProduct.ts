@@ -47,7 +47,7 @@ const ProductDetails = {
     });
   },
 
-  render: async () => {
+  render: () => {
     const request = parseRequestUrl();
     const id = Number(request.id);
     const product = getProductById(id);

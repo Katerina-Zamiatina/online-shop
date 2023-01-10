@@ -8,7 +8,6 @@ import {
   searchProducts,
   clearCheckbox,
   updateFilteredProducts,
-  addProductToCart,
   toggleBuyBtns,
 } from '../../controllers/localApi';
 import {
@@ -24,8 +23,8 @@ import { CheckBoxData, FilterNameType, Btns } from '../../types';
 let categoriesName = [...setStartFilter('category')];
 let brandsName = [...setStartFilter('brand')];
 
-function updateProductsList() {
-  const list = Products.render(updatedProducts);
+async function updateProductsList() {
+  const list = await Products.render(updatedProducts);
   const productContainer = <Element>(
     document.getElementById('products-container')
   );
@@ -66,7 +65,8 @@ function setStartFilter(key: FilterNameType) {
 const HomePage = {
   afterRender: async () => {
     // refs
-    const allCheckBoxes = document.querySelectorAll('input[type=checkbox]');
+    const allCheckBoxes: NodeListOf<HTMLInputElement> =
+      document.querySelectorAll('input[type=checkbox]');
     const clearBtn = <Element>document.getElementById('clear-checked');
     const select = <HTMLSelectElement>document.getElementById('sortSelect');
     const search = <HTMLInputElement>document.getElementById('searchBar');
@@ -104,6 +104,7 @@ const HomePage = {
     changeDisplay();
 
     // Filter
+
     allCheckBoxes.forEach(el =>
       el.addEventListener('change', async () => {
         updateFilteredProducts(allCheckBoxes);
@@ -121,11 +122,12 @@ const HomePage = {
     buyBtns.forEach(b => {
       b.addEventListener('click', (e: Event) => {
         const product = products.filter(el => el.id === Number(b.id));
+        const button = b as HTMLButtonElement;
         const { id, price } = product[0];
         const item = e.target as Btns;
         const dataset = item.dataset.added;
         toggleInCart(id.toString(), 1, price.toString());
-        toggleBuyBtns(b);
+        toggleBuyBtns(button);
         updateBtnState(b.id, dataset);
         prodInCart.textContent = getProdInCartNum().toString();
         totalSum.textContent = getProdSum().toString();
