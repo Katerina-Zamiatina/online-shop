@@ -1,5 +1,3 @@
-import { getCartProducts } from './localStorage';
-
 export function parseRequestUrl() {
   const address = document.location.hash.slice(1).split('?')[0];
   const queryString =
@@ -19,8 +17,12 @@ export function parseRequestUrl() {
   };
 }
 
-export async function rerender(component, container) {
-  document.getElementById(container).innerHTML = await component.render();
+export async function rerender(
+  component: { afterRender: any; render: () => string },
+  container: string
+) {
+  const comp = <Element>document.getElementById(container)
+  comp.innerHTML = component.render();
   await component.afterRender();
 }
 

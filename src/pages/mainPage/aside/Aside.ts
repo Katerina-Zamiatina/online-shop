@@ -1,23 +1,7 @@
-import { products } from '../../../data/data';
-
-function setStartFilter(key = 'category') {
-  const arrProd = [...products];
-  const checkFilters = [...new Set(arrProd.map(el => el[key]))].sort();
-  const result = [...checkFilters].map(filter => {
-    return {
-      ids: arrProd.filter(el => el[key] === filter).map(el => el.id),
-      name: filter,
-      count: arrProd.filter(el => el[key] === filter).length,
-    };
-  });
-  return result;
-}
-const categoriesName = [...setStartFilter('category')];
-const brandsName = [...setStartFilter('brand')];
-
+import { CheckBoxData } from '../../../types';
 
 const Aside = {
-  render: () => {
+  render: (categories: CheckBoxData, brands: CheckBoxData) => {
     return `<aside class="filter" id="aside-container">
     <div class="filter_btns">
           <button type="button" class="filter_btn" id="clear-checked">Clear Filters</button>
@@ -26,12 +10,12 @@ const Aside = {
         <h3 class="filter_title">Category</h3>
         <form class="category-filter" id="category">
 
-        ${categoriesName
+        ${categories
           .map(
             cat => `<div class="filter_item">
             <input class="filter_item" type="checkbox" name="category" value="${cat.name}" id="${cat.name}"/>
             <label class="filter_item-name" name="category" for="${cat.name}">${cat.name}</label>
-            <span class="stock">${cat.count}/${cat.count}</span></div>`
+            <span class="stock">${cat.count}/${cat.found}</span></div>`
           )
           .join('')}
 
@@ -39,11 +23,11 @@ const Aside = {
         <h3 class="filter_title">Brand</h3>
         <form class="brand-filter" id="brand">
 
-        ${brandsName
+        ${brands
           .map(
             brand => `<div class="filter_item"><input class="filter_item" type="checkbox" name="brand" value="${brand.name}" id="${brand.name}"/>
                     <label class="filter_item-name" name="category" for="${brand.name}">${brand.name}</label>
-                    <span class="stock">${brand.count}/${brand.count}</span></div>`
+                    <span class="stock">${brand.count}/${brand.found}</span></div>`
           )
           .join('')}
         </form>
