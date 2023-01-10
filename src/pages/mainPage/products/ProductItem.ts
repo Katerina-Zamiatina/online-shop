@@ -1,4 +1,5 @@
 import { parseRequestUrl } from '../../../controllers/utils';
+import { IProduct } from '../../../types';
 
 const ProductItem = {
   render: ({
@@ -10,7 +11,7 @@ const ProductItem = {
     thumbnail,
     images,
     stock,
-  }) => {
+  }: IProduct) => {
     const request = parseRequestUrl();
     const btns = document.querySelectorAll('addProduct');
     // console.log(btns)
@@ -35,8 +36,8 @@ const ProductItem = {
                        <span class="stock">In stock: ${stock}</span>
              </div>
              <div class="buttonsCard">
-              <button class="addProduct" id='${id}'><i class="fa-solid fa-cart-arrow-down iconAdd"></i></button>
-              <button class="hide deleteProduct" id="${id}">Delete</button>
+              <button class="addProduct" id="${id}" data-id="${id}">Add</button>
+
               <a href='#/product/${id}'><button class="description" id='${id}'>More</button>
               </a>
 

@@ -2,8 +2,6 @@ import ProductItem from '../mainPage/products/ProductItem';
 import { rerender, parseRequestUrl } from '../../controllers/utils';
 import { getProductById } from '../../controllers/localApi';
 
-// console.log(getProductById("2"))
-
 const ProductDetails = {
   afterRender: async () => {
     // Open product description
@@ -27,12 +25,12 @@ const ProductDetails = {
       const img = document.querySelectorAll('.fotoAllProducts');
     // Проверяем, что клик был совершен по изображению
       if (clickedElement.tagName === 'IMG') {
-    
+
         const container = document.querySelector(".oneFoto");
         container.innerHTML = '';
         container.innerHTML = `<img class="fotoOneproduct" src="${clickedElement.src}" alt="${clickedElement.alt}">`;
       }
-    } 
+    }
     //добавляем клик на картинку
       const images = document.querySelectorAll('.fotoAllProducts');
       images.forEach(img => img.addEventListener('click', ()=>{
@@ -45,7 +43,7 @@ const ProductDetails = {
     const btnBuy = document.querySelector('.btnBuy');
     const wrapperBackground = document.querySelector('.wrapperBackground');
           wrapperBackground.style.display = "none";
-      
+
       btnBuy.addEventListener('click', function(){
       wrapperBackground.style.display = "grid";
 
@@ -56,7 +54,7 @@ const ProductDetails = {
     const id = Number(request.id);
     const product = getProductById(id);
     let productItems = product[0].images;
-    return `    
+    return `
     <div class="wrapper">
       <div class="wrapperOneCard">
       <ul class="wrapperUl">
@@ -72,7 +70,7 @@ const ProductDetails = {
         <div class="cardOneTitle">${product[0].title.toUpperCase()}</div>
         <div class="cardOneDetails">
           <div class="allFoto" ${ productItems.map((el) => `<li> <img  class="fotoAllProducts" src=${el}> </li> ` ).join("")}></div>
-          
+
           <div class="oneFoto"><img class="fotoOneproduct" src="${product[0].images[0]}" alt="fotoProduct"></div>
           <div class="allDetails">
             <ul>
@@ -97,7 +95,7 @@ const ProductDetails = {
   </div>
     `;
   },
-  
+
 };
 
 

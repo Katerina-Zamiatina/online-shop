@@ -1,6 +1,5 @@
 import { products } from '../data/data';
 import { IProduct } from '../types';
-import { getCartProducts, setCartProducts } from './localStorage';
 
 const initialProducts = products;
 export let updatedProducts = products;
@@ -199,7 +198,7 @@ const checkRange = (acc, name, min, max) => {
 };
 
 // Add/delete products
-export const addProductToCart = (prod) => {
+export const addProductToCart = prod => {
   let cartProducts = setCart();
   // const existProduct = cartProducts.find(el => el.id === prod.id);
   // // const duplicates = cartProducts.reduce((acc, el) => {
@@ -219,17 +218,11 @@ export const addProductToCart = (prod) => {
   // setCartProducts(cartProducts);
 };
 
-export const toggleBuyBtns = (addBtns, delBtns, e) => {
-  addBtns.forEach(ab => {
-    if (ab.id === e.currentTarget.id) {
-      ab.classList.toggle('hide');
-    }
-  });
-  delBtns.forEach(db => {
-    if (db.id === e.currentTarget.id) {
-      db.classList.toggle('hide');
-    }
-  });
+export const toggleBuyBtns = btn => {
+  // btn.dataset.added ? (btn.dataset.added = true) : (btn.dataset.added = false);
+  btn.textContent === 'Add'
+    ? (btn.textContent = 'Delete') | (btn.dataset.added = true)
+    : (btn.textContent = 'Add') | (btn.dataset.added = false);
 };
 
 // export const drawFilteredProducts = (query, e) => {

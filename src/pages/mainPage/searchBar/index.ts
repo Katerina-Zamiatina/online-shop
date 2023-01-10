@@ -1,8 +1,8 @@
 import Select from './sortProducts';
 import Search from './searchProduct';
 
-const select = await Select.render();
-const search = await Search.render()
+const select = Select.render();
+const search = Search.render()
 
 const SearchWrapper = {
   render: () => {

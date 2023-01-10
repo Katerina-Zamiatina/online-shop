@@ -1,11 +1,9 @@
-import { parseRequestUrl } from '../../../controllers/utils';
 import ProductItem from './ProductItem';
+import { IData } from '../../../types';
 
 const Products = {
-  render: prods => {
-    // console.log('PRODS', prods);
-    const request = parseRequestUrl();
-
+  render: (prods: IData) => {
+    console.log('Products', prods);
     return `<ul class="wrapperProductCards" id="wrapperProductCards">
      ${prods.map(prod => ProductItem.render(prod)).join('\n')}
     </ul>`;
