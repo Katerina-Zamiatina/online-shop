@@ -60,7 +60,6 @@ function setStartFilter(key: FilterNameType) {
       found: arrProd.filter(el => el[key] === filter).length,
     };
   });
-  console.log('RESULT', result);
   return result;
 }
 
