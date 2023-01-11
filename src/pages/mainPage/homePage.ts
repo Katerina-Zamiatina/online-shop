@@ -18,6 +18,7 @@ import {
   getProdSum,
   updateBtnState,
   getBtnState,
+  toggleInStorage,
 } from '../../controllers/localStorage';
 import { CheckBoxData, FilterNameType, Btns } from '../../types';
 
@@ -137,7 +138,8 @@ const HomePage = {
         const { id, price } = product[0];
         const item = <Btns>e.target;
         const dataset = item.dataset.added;
-        toggleInCart(id.toString(), 1, price.toString());
+        toggleInStorage(id.toString(), 1, price.toString());
+
         toggleBuyBtns(button);
         prodInCart.textContent = getProdInCartNum().toString();
         totalSum.textContent = getProdSum().toString();
