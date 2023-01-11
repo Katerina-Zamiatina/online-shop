@@ -1,6 +1,7 @@
-import { OrderType, Btns, BtnsType } from '../types';
+import { OrderType, BtnsType } from '../types';
 
 export enum LocalStorage {
+  storageList = 'storage_list',
   cartList = 'cart_list',
   cartCount = 'cart_count',
   btns = 'btns_state',
@@ -21,10 +22,33 @@ export function updateCart(id: string, count: string, stock: string) {
   }
 }
 
+export function toggleInStorage(id: string, count: number, price: string) {
+  const store = getStorage();
+  const length = Object.entries(store).length;
+  let newStore = store;
+  if (store[id]) {
+    if (count > 0) {
+      delete newStore[id];
+      setCartCount(length !== 0 ? length - 1 : 0);
+    } else {
+      newStore = {
+        ...store,
+        [id]: { count: count.toString(), price },
+      };
+    }
+  } else {
+    newStore[id] = { count: count.toString(), price };
+    setCartCount(length + 1);
+  }
+  setStorage(newStore);
+  setCart(newStore);
+}
+
 export function toggleInCart(id: string, count: number, price: string) {
   const store = getCart();
   const length = Object.entries(store).length;
   let newStore = store;
+  console.log('store[id]', store[id]);
   if (store[id]) {
     if (count > 0) {
       newStore = store
@@ -49,18 +73,26 @@ export function toggleInCart(id: string, count: number, price: string) {
   setCart(newStore);
 }
 
-export function updateBtnState(id: string, added: boolean) {
+export function updateBtnState(id: string, added: string) {
   const btns = getBtnState();
   let newBtns = btns;
-  console.log('btns[id]', btns);
-  if (added) {
-    newBtns = { ...btns, [id]: { id, added: true } };
+  if (added === 'true') {
+    newBtns = { ...btns, [id]: { id, added: 'true' } };
   } else {
     delete newBtns[id];
   }
-
   setBtnState(newBtns);
-  console.log(newBtns);
+}
+
+export function setStorage<T>(list: T) {
+  localStorage.setItem(LocalStorage.storageList, JSON.stringify(list));
+}
+
+export function getStorage() {
+  const str = localStorage.getItem(LocalStorage.storageList);
+  if (str === null) return {};
+  const list = JSON.parse(str) as Record<string, OrderType>;
+  return list ? list : {};
 }
 
 export function setCart<T>(list: T) {

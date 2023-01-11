@@ -17,14 +17,16 @@ import {
   getCartCount,
   getProdSum,
   updateBtnState,
+  getBtnState,
+  toggleInStorage,
 } from '../../controllers/localStorage';
 import { CheckBoxData, FilterNameType, Btns } from '../../types';
 
 let categoriesName = [...setStartFilter('category')];
 let brandsName = [...setStartFilter('brand')];
 
-async function updateProductsList() {
-  const list = await Products.render(updatedProducts);
+function updateProductsList() {
+  const list = Products.render(updatedProducts);
   const productContainer = <Element>(
     document.getElementById('products-container')
   );
@@ -120,15 +122,25 @@ const HomePage = {
 
     // Buy&delete
     buyBtns.forEach(b => {
+      const btnState = getBtnState();
+      const btnStateId = Object.keys(btnState);
+      const button = <HTMLButtonElement>b;
+      btnStateId.forEach(index => {
+        if (index === button.id) {
+          button.dataset.added = 'true';
+        }
+      });
+      if (button.dataset.added === 'true') {
+        button.innerHTML = 'Delete';
+      }
       b.addEventListener('click', (e: Event) => {
         const product = products.filter(el => el.id === Number(b.id));
-        const button = b as HTMLButtonElement;
         const { id, price } = product[0];
-        const item = e.target as Btns;
+        const item = <Btns>e.target;
         const dataset = item.dataset.added;
-        toggleInCart(id.toString(), 1, price.toString());
+        toggleInStorage(id.toString(), 1, price.toString());
+
         toggleBuyBtns(button);
-        updateBtnState(b.id, dataset);
         prodInCart.textContent = getProdInCartNum().toString();
         totalSum.textContent = getProdSum().toString();
       });

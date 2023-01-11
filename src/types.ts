@@ -35,13 +35,13 @@ export interface ICartProduct extends IProduct {
 export interface Btns extends Element {
   dataset: {
     id: string;
-    added: boolean;
+    added: string;
   };
 }
 
 export type BtnsType = {
   id: string;
-  added: boolean;
+  added: string;
 };
 
 export interface CheckBox {
@@ -49,6 +49,11 @@ export interface CheckBox {
   name: string;
   count: number;
   found: number;
+}
+
+export interface ICheckFilters {
+  brand: Array<string>;
+  category: Array<string>;
 }
 
 export type FilterNameType = 'category' | 'brand';
