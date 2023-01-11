@@ -18,10 +18,10 @@ export function parseRequestUrl() {
 }
 
 export async function rerender(
-  component: { afterRender: any; render: () => string },
+  component: { afterRender: () => Promise<void>; render: () => string },
   container: string
 ) {
-  const comp = <Element>document.getElementById(container)
+  const comp = <Element>document.getElementById(container);
   comp.innerHTML = component.render();
   await component.afterRender();
 }

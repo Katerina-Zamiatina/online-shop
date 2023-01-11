@@ -10,8 +10,6 @@ import { products } from '../../data/data';
 const cartStorage = getCart();
 const idInCart = Object.keys(cartStorage);
 const values = Object.values(cartStorage);
-console.log(values);
-console.log(idInCart);
 
 function update(sums: NodeListOf<HTMLElement>) {
   sums.forEach((s: HTMLElement) => {
@@ -50,8 +48,6 @@ const Cart = {
     const cartStorage = getCart();
     const idInCart = Object.keys(cartStorage);
     const values = Object.values(cartStorage);
-    console.log(values);
-    console.log(idInCart);
     update(sumOfProd);
     // Add,delete in cart
     plusProd.forEach(btn => {
@@ -59,6 +55,17 @@ const Cart = {
         const btnId = btn.id.toString();
         if (idInCart.includes(btnId)) {
           toggleInCart(btnId, 1, values[0].price);
+          update(sumOfProd);
+        }
+        // console.log(btn);
+      });
+    });
+
+    minusProd.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const btnId = btn.id.toString();
+        if (idInCart.includes(btnId)) {
+          toggleInCart(btnId, -1, values[0].price);
           update(sumOfProd);
         }
         // console.log(btn);
