@@ -198,9 +198,10 @@ function checkInputs() {
 
 function setErrorFor(input: HTMLInputElement, message: string) {
   const formControl = <HTMLInputElement>input.parentElement;
-  const span = <Element>document.querySelector('.wrapperInput');
+  const span: NodeListOf<HTMLElement> =
+    document.querySelectorAll('.wrapperInput');
   formControl.className = 'form-conrol error';
-  span.innerHTML = message;
+  span.forEach(el => (el.innerHTML = message));
   formControl.className = 'error';
   formControl.style.color = 'rgb(244, 123, 123)';
 }

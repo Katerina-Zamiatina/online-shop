@@ -18,6 +18,19 @@ export const getProductById = (id: number) => {
   return products.filter(item => item.id === id);
 };
 
+export const toggleBuyBtns = (btn: HTMLButtonElement) => {
+  let btnDataset = btn.dataset.added;
+  btnDataset ? (btnDataset = 'true') : (btnDataset = 'false');
+  if (btn.textContent === 'Add') {
+    btn.textContent = 'Delete';
+    btnDataset = 'true';
+  } else {
+    btn.textContent = 'Add';
+    btnDataset = 'false';
+  }
+  updateBtnState(btn.id, btnDataset);
+};
+
 // Search by query
 export function searchProducts(query: string) {
   query = query.toUpperCase();
@@ -184,6 +197,7 @@ export function clearCheckbox(checked: NodeListOf<HTMLInputElement>) {
 }
 
 // Search by range
+
 // const setRangeState = (type, min, max) => {
 //   range[type] = { min, max };
 // };
@@ -208,37 +222,3 @@ export function clearCheckbox(checked: NodeListOf<HTMLInputElement>) {
 //     return item[name] >= min && item[name <= max];
 //   });
 // };
-
-// Add/delete products
-// export const addProductToCart = (prod: IProduct) => {
-// let cartProducts = setCart(prod);
-// const existProduct = cartProducts.find(el => el.id === prod.id);
-// // const duplicates = cartProducts.reduce((acc, el) => {
-// //   acc[el] = (acc[el] || 0) + 1;
-// //   return acc;
-// // }, 0);
-// // console.log('duplicates', duplicates);
-// if (existProduct) {
-//   if (forceUpdate) {
-//     cartProducts = cartProducts.map(el =>
-//       el.id === existProduct.id ? prod : el
-//     );
-//   }
-// } else {
-//   cartProducts = [...cartProducts, prod];
-// }
-// setCartProducts(cartProducts);
-// };
-
-export const toggleBuyBtns = (btn: HTMLButtonElement) => {
-  let btnDataset = btn.dataset.added;
-  btnDataset ? (btnDataset = 'true') : (btnDataset = 'false');
-  if (btn.textContent === 'Add') {
-    btn.textContent = 'Delete';
-    btnDataset = 'true';
-  } else {
-    btn.textContent = 'Add';
-    btnDataset = 'false';
-  }
-  updateBtnState(btn.id, btnDataset);
-};
