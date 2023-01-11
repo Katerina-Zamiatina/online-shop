@@ -1,8 +1,7 @@
 import { products } from '../data/data';
-import { IProduct, FilterNameType } from '../types';
-import { setCart } from './localStorage';
+import { ICheckFilters } from '../types';
+import { setCart, updateBtnState } from './localStorage';
 
-const initialProducts = products;
 export let updatedProducts = products;
 
 const checkFilters: ICheckFilters = {
@@ -125,11 +124,6 @@ export function sortProducts(e: Event) {
 }
 
 // Search by checkboxes
-interface ICheckFilters {
-  brand: Array<string>;
-  category: Array<string>;
-}
-
 function getCheckboxesValue(checkboxes: Array<HTMLInputElement>) {
   const values: Array<string> = [];
   checkboxes.forEach(el => {
@@ -237,8 +231,14 @@ export function clearCheckbox(checked: NodeListOf<HTMLInputElement>) {
 // };
 
 export const toggleBuyBtns = (btn: HTMLButtonElement) => {
-  // btn.dataset.added ? (btn.dataset.added = true) : (btn.dataset.added = false);
-  // btn.textContent === 'Add'
-  //   ? (btn.textContent = 'Delete') | (btn.dataset.added = true)
-  //   : (btn.textContent = 'Add') | (btn.dataset.added = false);
+  let btnDataset = btn.dataset.added;
+  btnDataset ? (btnDataset = 'true') : (btnDataset = 'false');
+  if (btn.textContent === 'Add') {
+    btn.textContent = 'Delete';
+    btnDataset = 'true';
+  } else {
+    btn.textContent = 'Add';
+    btnDataset = 'false';
+  }
+  updateBtnState(btn.id, btnDataset);
 };

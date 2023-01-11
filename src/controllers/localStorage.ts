@@ -49,18 +49,15 @@ export function toggleInCart(id: string, count: number, price: string) {
   setCart(newStore);
 }
 
-export function updateBtnState(id: string, added: boolean) {
+export function updateBtnState(id: string, added: string) {
   const btns = getBtnState();
   let newBtns = btns;
-  console.log('btns[id]', btns);
-  if (added) {
-    newBtns = { ...btns, [id]: { id, added: true } };
+  if (added === 'true') {
+    newBtns = { ...btns, [id]: { id, added: 'true' } };
   } else {
     delete newBtns[id];
   }
-
   setBtnState(newBtns);
-  console.log(newBtns);
 }
 
 export function setCart<T>(list: T) {
