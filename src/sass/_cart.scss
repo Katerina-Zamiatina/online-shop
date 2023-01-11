@@ -69,7 +69,7 @@
   }
 
   &_info {
-    justify-self: end;
+    text-align: center;
   }
 
   &_num {
@@ -79,6 +79,18 @@
     box-shadow: $shadow-outer;
     border-radius: 2px;
   }
+}
+
+.stock-control {
+  margin-bottom: 10px;
+}
+
+.amount-control {
+  margin: 10px 0;
+}
+
+.delete-button {
+  padding: 5px;
 }
 
 .item_details {
@@ -104,6 +116,32 @@
   display: flex;
   justify-content: space-between;
   color: $buyForm-creditCard-bg-color;
+}
+
+.quantity-buttons-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-increase-button,
+.item-reduce-button {
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.item-reduce-button {
+  background-image: url('../../assets/minus.svg');
+}
+
+.item-increase-button {
+  background-image: url('../../assets/plus.svg');
 }
 
 // Summary
@@ -152,7 +190,15 @@
 }
 
 .btnBuy {
+  background-color: rgb(15, 15, 15);
+  color: antiquewhite;
+  width: 100%;
   display: block;
   padding: 5px;
   margin: 0 auto;
+}
+
+.btnBuy:hover {
+  background-color: rgb(182, 182, 182);
+  color: rgb(15, 15, 15);
 }

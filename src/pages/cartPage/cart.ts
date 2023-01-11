@@ -7,6 +7,19 @@ import {
 } from '../../controllers/localStorage';
 import { products } from '../../data/data';
 
+const cartStorage = getCart();
+const idInCart = Object.keys(cartStorage);
+const values = Object.values(cartStorage);
+console.log(values);
+console.log(idInCart);
+
+function update(sums: NodeListOf<HTMLElement>) {
+  sums.forEach((s: HTMLElement) => {
+    idInCart.forEach(id =>
+      s.id === id ? (s.innerHTML = cartStorage[id].count) : null
+    );
+  });
+}
 const top = `<div class="cart-list_top">
               <h2>Products in Cart</h3>
               <div class="page-control">
@@ -25,9 +38,31 @@ const top = `<div class="cart-list_top">
 
 const Cart = {
   afterRender: async () => {
-    const selectedQty = document.getElementsByClassName('qty-select');
-    Array.from(selectedQty).forEach(el => {
-      el.addEventListener('change', e => {});
+    // Refs
+    const plusProd = document.querySelectorAll('.item-increase-button');
+    const minusProd = document.querySelectorAll('.item-reduce-button');
+    const deleteProd = document.querySelectorAll('.deleteBtn');
+    const sumOfProd: NodeListOf<HTMLElement> =
+      document.querySelectorAll('.item-quantity');
+    const amountControls = document.querySelectorAll('.amount-control');
+    const countSumCart = document.querySelector('.totalItems');
+    const commonSumCart = document.querySelector('.total-in-cart');
+    const cartStorage = getCart();
+    const idInCart = Object.keys(cartStorage);
+    const values = Object.values(cartStorage);
+    console.log(values);
+    console.log(idInCart);
+    update(sumOfProd);
+    // Add,delete in cart
+    plusProd.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const btnId = btn.id.toString();
+        if (idInCart.includes(btnId)) {
+          toggleInCart(btnId, 1, values[0].price);
+          update(sumOfProd);
+        }
+        // console.log(btn);
+      });
     });
   },
   render: () => {
@@ -40,7 +75,6 @@ const Cart = {
     const productsInCart = products.filter(prod =>
       idInCart.includes(prod.id.toString())
     );
-    console.log(productsInCart);
 
     return `<div class="content cart">
                   ${
@@ -79,26 +113,19 @@ const Cart = {
                                             <div _ngcontent-lhl-c25="" class="stock-control"> Stock: ${
                                               item.stock
                                             }</div>
-                                            <div>Qty:<select class="qty-select" id="${item}">
-                                                        ${[
-                                                          ...Array(
-                                                            item.stock
-                                                          ).keys(),
-                                                        ].map(x =>
-                                                          item.stock === x + 1
-                                                            ? `<option selected value="${
-                                                                x + 1
-                                                              }">${
-                                                                x + 1
-                                                              }</option>`
-                                                            : `<option  value="${
-                                                                x + 1
-                                                              }">${
-                                                                x + 1
-                                                              }</option>`
-                                                        )}
-                                                      </select>
+
+                                            <div class="quantity-buttons-container">
+                                              <div class="item-reduce-button" id="${
+                                                item.id
+                                              }"></div>
+                                              <p class="item-quantity" id="${
+                                                item.id
+                                              }">1</p>
+                                              <div class="item-increase-button" id="${
+                                                item.id
+                                              }"></div>
                                             </div>
+
                                             <div _ngcontent-lhl-c25="" class="amount-control"> €${
                                               item.price
                                             }.00 </div>

@@ -4,6 +4,7 @@ import NotFound from './pages/notFoundPage/notFound';
 import Cart from './pages/cartPage/cart';
 import HomePage from './pages/mainPage/homePage';
 import { parseRequestUrl } from './controllers/utils';
+import './pages/buyForm/buyForm';
 
 interface IPage {
   afterRender: () => void;

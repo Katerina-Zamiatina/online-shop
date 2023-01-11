@@ -11,16 +11,12 @@ import {
   toggleBuyBtns,
 } from '../../controllers/localApi';
 import {
-  toggleInCart,
-  setBtnState,
   getProdInCartNum,
-  getCartCount,
   getProdSum,
-  updateBtnState,
   getBtnState,
   toggleInStorage,
 } from '../../controllers/localStorage';
-import { CheckBoxData, FilterNameType, Btns } from '../../types';
+import { FilterNameType, Btns } from '../../types';
 
 let categoriesName = [...setStartFilter('category')];
 let brandsName = [...setStartFilter('brand')];
@@ -112,6 +108,7 @@ const HomePage = {
         updateFilteredProducts(allCheckBoxes);
         found.textContent = updatedProducts.length.toString();
         updateProductsList();
+
       })
     );
 
