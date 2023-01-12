@@ -42,10 +42,6 @@ router();
 window.addEventListener('load', router);
 window.addEventListener('hashchange', router);
 
-alert(
-  'Нажаль ми не встигли доробити до кінця 💔 Дякуємо за розуміння! Лінк на пул реквест в консолі. https://github.com/Katerina-Zamiatina/online-shop/pull/21'
-);
-
 console.log(
   'Link to Pull Request',
   'https://github.com/Katerina-Zamiatina/online-shop/pull/21'
