@@ -1,4 +1,4 @@
-import { OrderType, BtnsType } from '../types';
+import { OrderType, BtnsType, ICart } from '../types';
 
 export enum LocalStorage {
   storageList = 'storage_list',
@@ -48,7 +48,6 @@ export function toggleInCart(id: string, count: number, price: string) {
   const store = getCart();
   const length = Object.entries(store).length;
   let newStore = store;
-  console.log('store[id]', store[id]);
   if (store[id]) {
     if (count > 0) {
       newStore = store
@@ -124,6 +123,11 @@ export function getProdInCartNum() {
         return acc + Math.floor(Number(val.count));
       }, 0)
     : 0;
+}
+
+export function getCountofOneProd(id: number) {
+  const store = getCart();
+  return store[id] ? store[id].count : 0;
 }
 
 export function getProdSum() {
