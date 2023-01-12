@@ -1,0 +1,20 @@
+.main {
+  width: 100%;
+  min-height: calc(100vh - 80px);;
+  display: flex;
+  float: left;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.filter {
+  max-width: 200px;
+  height: 80%;
+  margin-right: 15px;
+  margin-left: 20px;
+}
+
+.right-side {
+  float: right;
+  width: calc(100% - 210px);
+}

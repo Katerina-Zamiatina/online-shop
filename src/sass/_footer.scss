@@ -1,0 +1,48 @@
+.footer {
+  display: grid;
+  width: 100%;
+  height: 80px;
+  justify-items: baseline;
+  box-shadow: $shadow-outer;
+}
+
+.footerNav {
+  display: grid;
+  width: 80%;
+  grid-template-columns: 1fr 150px 1fr;
+  font-family: 'Courgette', cursive;
+  justify-self: center;
+  justify-items: center;
+  align-items: center;
+}
+
+.linkGitHub {
+  text-decoration: none;
+}
+
+.iconGitHub {
+  display: grid;
+  color: rgb(33, 33, 33);
+  font-size: 46px;
+}
+
+.iconGitHub:hover {
+  color: bisque;
+}
+
+.rsLogo {
+  display: grid;
+  width: 150px;
+  height: 80px;
+}
+
+.rsLogoImg {
+  display: grid;
+  width: 150px;
+  height: 80px;
+}
+
+.yearFooter {
+  display: grid;
+  text-align: center;
+}

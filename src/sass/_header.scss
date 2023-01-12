@@ -1,0 +1,56 @@
+.header {
+  font-family: 'Courgette', cursive;
+  height: 80px;
+} 
+a{
+  text-decoration: none;
+  color: rgb(69, 71, 71);
+}
+.headerNav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 7px;
+}
+
+.headerLogo {
+  justify-self: flex-start;
+  font-size: 34px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.headerIcon {
+  color: cadetblue;
+  font-size: 48px;
+}
+
+.total {
+  padding-top: 20px;
+  font-size: 28px;
+  white-space: nowrap;
+}
+
+.basket {
+  padding-top: 20px;
+  cursor: pointer;
+}
+
+.iconBasket {
+  position: relative;
+  font-size: 24px;
+}
+
+.iconBasket:hover {
+  color: $hover-color;
+}
+
+.totalItems {
+  display: grid;
+  position: absolute;
+  font-size: 12px;
+  margin-top: -25px;
+  margin-left: 11px;
+  border-radius: 50%;
+  color: $accent-text-color;
+}

@@ -1,0 +1,50 @@
+.wrapperSearch {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 9px 5px;
+  margin-bottom: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+  box-shadow: $shadow-inner;
+  border-radius: 5px;
+}
+.inputText {
+  padding: 5px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: $secondary-bg-color;
+  box-shadow: $shadow-outer;
+}
+
+.found {
+  display: inline;
+  align-self: center;
+  justify-self: center;
+}
+
+.sortSelect {
+  padding: 5px 0;
+  background-color: $secondary-bg-color;
+  border-radius: 8px;
+  border: none;
+  box-shadow: $shadow-outer;
+}
+
+.changeDisplay {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-self: center;
+}
+.display2x2,
+.display3x3 {
+  width: 100%;
+  justify-self: center;
+  padding: 5px;
+}
+
+.display2x2 {
+  margin-right: 5px;
+}
